@@ -1,0 +1,24 @@
+\centering
+\begin{tikztimingtable}[
+    timing/slope=0,         % no slope
+    timing/rowdist=\ttrd,     % row distance
+    timing/coldist=2pt,     % column distance
+    xscale=3,yscale=1.5, % scale diagrams
+    semithick ,              % set line width
+  ]
+
+ & G1.2D{\T-\C}G{[fill=black!20] 0.2D{\C}G}1.2D{\T-\C}G{[fill=black!20] 0.2D{\C}G}1.2D{\T-\C}G{[fill=black!20] 0.2D{\C}G}1.2D{\T-\C}G{[fill=black!20] 0.2D{\C}G}1.2D{\T-\C}G{[fill=black!20] 0.2D{\C}G}{[fill=black!80] 3DG}\\
+\extracode
+%  \tableheader{Probability}{\waste}
+ \makeatletter
+ \begin{pgfonlayer}{background}
+%Ligne 0
+%\arrowtime{0}{9.5};
+\legende{0,0}{7}{\Time[FF]=\Time[Final](1-\Waste[Fail])};
+%\legende{3.2,0}{0.9}{\Wregular};
+%\legende{4.6,0}{1.1}{\T-\Wregular-\C};
+\legende{7,0}{3}{$\Time[Final]\times\Waste[Fail]$};
+\legende{0,-1.6}{10}{\Time[Final]};
+ \end{pgfonlayer}
+\end{tikztimingtable}%
+

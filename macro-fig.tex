@@ -1,0 +1,130 @@
+
+
+%Macros for prediction drawings.
+\newcommand{\fault}[1]{
+\draw[->, color=red] ($(#1)+(0.2,1)$) -- ($(#1)+(0.1,0.7)$) -- ($(#1)+(0.2,0.6)$) -- (#1);
+} %donner les coordonnées de l'endroit où la faute arrive.
+
+\newcommand{\faultfailstop}[1]{
+\draw[<-, color=red] (#1) -- ($(#1)+(0.2,1.2)$) -- ($(#1)+(0.1,1.4)$) --  ($(#1)+(0.2,2.2)$) node[above, right] {\scriptsize{fault}};
+} %donner les coordonnées de l'endroit où la faute arrive.
+
+\newcommand{\faultsilent}[1]{
+\draw[<-, color=red] (#1) -- ($(#1)+(0.2,1.2)$) -- ($(#1)+(0.1,1.4)$) --  ($(#1)+(0.2,2.2)$) node[above] {\scriptsize{silent error}};
+} %donner les coordonnées de l'endroit où la faute arrive.
+
+\newcommand{\falsealarm}[1]{
+\draw[<-, color=blue] (#1) -- ($(#1)+(0.2,0.8)$) -- ($(#1)+(0.1,1)$) --  ($(#1)+(0.2,1.6)$)  node[above, right] {\scriptsize{false alarm}};
+}
+
+\newcommand{\detecfault}[1]{
+
+}
+
+
+\newcommand{\faultbis}[1]{
+\draw[<-, color=red] (#1) -- ($(#1)+(0.2,1.2)$) -- ($(#1)+(0.1,1.4)$) --  ($(#1)+(0.2,2)$) node[above, left] {\scriptsize{fault}};
+} %donner les coordonnées de l'endroit où la faute arrive.
+\newcommand{\smallpred}[1]{
+\draw[<-, color=blue] (#1) -- ($(#1)+(0.2,1.2)$) -- ($(#1)+(0.1,1.4)$) --  ($(#1)+(0.2,2)$)  node[above, right] {\scriptsize{pred.}};
+} 
+\newcommand{\faultpred}[1]{
+\draw[<-, color=green] (#1) -- ($(#1)+(0.2,1.2)$) -- ($(#1)+(0.1,1.4)$) --  ($(#1)+(0.2,2)$)  node[above] {\scriptsize{F+P}};
+} 
+
+
+\newcommand{\detecfaultyes}[1]{
+\draw[<-, color=blue] (#1) -- ($(#1)+(0.7,1)$) -- ($(#1)+(0.6,1.2)$) --  ($(#1)+(1.3,2)$)  node[above, right] {\scriptsize{detect!}};
+}
+\newcommand{\detecfaultno}[1]{
+\draw[<-, color=blue] (#1) -- ($(#1)+(0.2,0.8)$) -- ($(#1)+(0.1,1)$) --  ($(#1)+(0.2,1.6)$)  node[above, right] {\scriptsize{detect?}};
+}
+
+\newcommand{\corruptckpsure}[1]{
+\draw[thick, color=red] ($(#1)+(-0.6,-1)$) -- ($(#1)+(0.6,1)$) ($(#1)+(0.6,-1)$) -- ($(#1)+(-0.6,1)$)  node at ($(#1)+(0,1.5)$) {\scriptsize{corrupted!}};
+}
+
+\newcommand{\corruptckpnotsure}[1]{
+\draw[thick, color=orange] ($(#1)+(-0.6,-1)$) -- ($(#1)+(0.6,1)$) ($(#1)+(0.6,-1)$) -- ($(#1)+(-0.6,1)$)  node at ($(#1)+(0,1.5)$) {\scriptsize{corrupted?}};
+}
+
+\newcommand{\predfault}[1]{
+\draw[<-, color=blue] ($(#1) + (0,1)$) -- ($(#1)+(0.2,1.6)$)  -- ($(#1)+(0.1,1.7)$) -- ($(#1)+(0.2,2)$)  node[above, right] {\scriptsize{Predicted fault}};
+} 
+
+\newcommand{\predfaultint}[2]{
+\draw[thick, color=blue,<->] ($(#1)+(0,1.10)$) -- ($(#1)+(#2,1.10)$) node[above=-0.5pt, midway] {\scriptsize{\I}};
+\draw[dashed, color=blue] ($(#1)$) --  ($(#1)+(0,1.10)$);
+\draw[dashed, color=blue] ($(#1)+(#2,0)$) --  ($(#1)+(#2,1.10)$);
+} %Le deuxieme argument est la longueur de l'intervalle I, le premier est l'endroit où il commence.
+\newcommand{\faultint}[2]{
+\draw[thick, color=red] ($(#1)+(0,0.10)$) -- ($(#1)+(#2,0.10)$);
+}
+
+\newcommand{\simplytextbelow}[3]{
+\draw[thick,color=white] ($(#1)+(0,-0.30)$) -- ($(#1)+(#2,-0.30)$) node[below=0.0pt, midway] {\scriptsize{#3}};
+}
+
+\newcommand{\simplytextabove}[3]{
+\draw[thick,color=white] ($(#1)+(0,0.30)$) -- ($(#1)+(#2,0.30)$) node[below=0.0pt, midway] {\scriptsize{#3}};
+}
+
+\newcommand{\legend}[3]{
+  \draw[thin, <->] ($(#1)+(0,-0.20)$) -- ($(#1)+(#2,-0.20)$) node[below=-0.5pt, midway] {\scriptsize{#3}};
+}
+
+\newcommand{\legende}[3]{
+\draw[thick, <->] ($(#1)+(0,-0.20)$) -- ($(#1)+(#2,-0.20)$) node[below=-0.5pt, midway] {\scriptsize{#3}};
+}
+
+\newcommand{\semilegende}[3]{
+\draw[thick,dashed,<-] ($(#1)+(0,-0.20)$) -- ($(#1)+(1,-0.20)$) node[below=-0.5pt, midway] {};
+\draw[thick,->] ($(#1)+(1,-0.20)$) -- ($(#1)+(#2,-0.20)$) node[below=-0.5pt, midway] {\scriptsize{#3}};
+}
+\newcommand{\legendeW}[3]{
+\draw[thick, <->] ($(#1)+(0,-0.20)$) -- ($(#1)+(#2,-0.20)$) node[below=+0.5pt, midway] {\scriptsize{#3}};
+}
+
+\newcommand{\legendelongue}[4]{
+\draw[thick,<->] ($(#1)+(0,-0.20)$) -- ($(#1)+(#2,-0.20)$) node[below=-0.5pt, midway] {\scriptsize{#3}};
+\draw[draw=none] ($(#1)+(0,-0.80)$) -- ($(#1)+(#2,-0.80)$) node[below=-0pt, midway] {\scriptsize{#4}};
+}
+
+
+\newcommand{\arrowtime}[2]{
+\draw[thick, color=black,->] (0,#1) -- (#2,#1) node[below=-0.5pt, ] {\scriptsize{Time}};
+}
+
+\newcommand{\rd}{0.4cm}
+\newcommand{\ttrd}{4} %time table row distance
+
+\newcommand{\bracetikz}[2]
+{\draw [thick,color=red, decorate,decoration={brace,amplitude=10pt,mirror},xshift=0.4pt,yshift=-0.4pt] ($(#1)+(0,-0.2)$) -- ($(#2)+(0,-0.2)$) node[black,midway,yshift=-0.6cm] {};}
+
+\newcommand{\patternCV}[3]{
+\draw[very thick, color=red] ($(#1,#3)+(0,-0.5)$) -- ($(#1,#3)+(0,1.5)$);
+\draw[very thick, color=red] ($(#2,#3)+(0,-0.5)$) -- ($(#2,#3)+(0,1.5)$);
+}
+
+\newcommand{\patternCVlong}[3]{
+\draw[very thick, color=red] ($(#1,#3)+(0,-1.5)$) -- ($(#1,#3)+(0,1.8)$);
+\draw[very thick, color=red] ($(#2,#3)+(0,-1.5)$) -- ($(#2,#3)+(0,1.8)$);
+}
+
+\newcommand{\patternCVlooong}[3]{
+\draw[very thick, color=red] ($(#1,#3)+(0,-2)$) -- ($(#1,#3)+(0,1.8)$);
+\draw[very thick, color=red] ($(#2,#3)+(0,-2)$) -- ($(#2,#3)+(0,1.8)$);
+}
+
+\newcommand{\here}[2]{
+\draw[very thick,<-] ($(#1,#2)$) -- ($(#1,#2)+(0,-1.5)$);
+}
+
+\newcommand{\failstop}[1]{
+\draw[<-, color=red] (#1) -- ($(#1)+(0.2,1.2)$) -- ($(#1)+(0.1,1.4)$) --  ($(#1)+(0.2,2.2)$) node[above, left] {\scriptsize{Fail-stop Error}};
+}
+
+\newcommand{\proc}[3][white]{
+%\draw[thick, color=black,->] (0,#1) -- (#2,#1) node[below=-0.5pt, ] {\scriptsize{Time}};
+\draw (-0.5,#3) node [fill=#1,draw, circle, inner sep = 1pt] {\scriptsize{\ema{#2}}};
+}

@@ -1,0 +1,257 @@
+\documentclass[compress,aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor,soul}
+%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[american]{babel}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{figlatex}
+\usepackage{colortbl}
+\usepackage[labelformat=empty]{caption}
+\renewcommand{\captionfont}{\scriptsize}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{environ}
+\usepackage{dot2texi}
+\usepackage{tipa}
+\usepackage{pifont,ulsy}
+
+\AtBeginDocument{\renewcommand{\proofname}{{\bf Proof}}}
+
+\makeatletter
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+\graphicspath{{figures/}{fig}}
+
+\definecolor{cinnabar}{rgb}{1,0.5,0.5}
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myblock}[2][]{beamer,title=#2,fonttitle=\sffamily,
+  left=1mm,right=1mm,top=1mm,bottom=1mm,arc=2mm,
+  colback=black,colupper=white,colframe=yellow,
+  coltitle=black,title style={top color=red!70,bottom color=yellow},
+  #1}
+
+
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{fontsize=\scriptsize}
+
+\mode<presentation>
+{
+  \usetheme{Replica}
+  \setbeamercovered{transparent}
+}
+
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcount\beamer@writeslidentry@miniframesoneoversome@counter
+\newcount\beamer@writeslidentry@miniframesoneoversome@limit
+\beamer@writeslidentry@miniframesoneoversome@counter=1
+\newcount\beamer@writeslidentry@miniframesoneoversome@limit
+\beamer@writeslidentry@miniframesoneoversome@limit=5
+\def\beamer@writeslidentry@miniframesoneoversome{%
+  \ifnum\beamer@writeslidentry@miniframesoneoversome@counter=\beamer@writeslidentry@miniframesoneoversome@limit\relax%
+    \beamer@writeslidentry@miniframesoneoversome@counter=1\relax%
+    \beamer@writeslidentry@miniframeson%
+  \else%
+    \advance\beamer@writeslidentry@miniframesoneoversome@counter by 1%
+    \beamer@writeslidentry@miniframesoff%
+  \fi%
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\newcommand*{\miniframesalternate}[1]{%
+   \beamer@writeslidentry@miniframesoneoversome@counter=1\relax%
+   \beamer@writeslidentry@miniframesoneoversome@limit=#1\relax%
+   \let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoneoversome}
+
+% Define the subsectionsonly option for beamer toc
+\def\beamer@tocaction@only#1{\only<.(1)>{\usebeamertemplate**{#1}}}
+\define@key{beamertoc}{subsectionsonly}[]{\beamer@toc@subsectionstyle{show/only}\beamer@toc@subsubsectionstyle{show/shaded/hide}}
+\makeatother
+
+\usepackage{enumerate}
+\usepackage{url,xspace}
+\usepackage{relsize}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{subfigure}
+\usepackage{graphicx,psfrag}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pstool}
+\usepackage{blkarray}
+\usepackage{wasysym}
+\def\smiley{\green{\larger[2]\wasyfamily\char44}\xspace}
+\def\frownie{\blue{\larger[2]\wasyfamily\char47}\xspace}
+\def\quesley{\yyellow{\hbox to -0.08em{\textraiseglotstop}$_{\textrm{\wasyfamily\char47}}$}\xspace}
+
+\usepackage{tipa}
+\usepackage{pifont}
+
+\AtBeginDocument{\renewcommand{\proofname}{{\bf Proof}}}
+\newcommand{\itemb}{\item[$\bullet$]}
+ \newcommand{\un}{1 \hspace{-0.132cm}1}
+\newcommand{\ignore}[1]{}
+
+\newcommand<>{\blue}[1]{{\color#2{blue!100!black!100}#1}}
+\newcommand<>{\red}[1]{{\color#2{red!80!black}#1}}
+\newcommand<>{\green}[1]{{\color#2{green!70!black}#1}}
+\newcommand<>{\purple}[1]{{\color#2{blue!50!red}#1}}
+\newcommand<>{\yyellow}[1]{{\color#2{yellow!90!black}#1}}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\tcbuselibrary{fitting}
+\newtcolorbox{mythmbox}[2][]{colback=white,fonttitle=\bfseries,enhanced,attach boxed title to top left={xshift=15mm,yshift=-2mm},title=#2,#1}
+\newtcbox{mybox}[2][]{fonttitle=\bfseries,enhanced,attach boxed title to top left={xshift=15mm,yshift=-2mm},title=#2,#1}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathreplacing, calc}
+
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\tcbuselibrary{fitting}
+
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathreplacing, calc}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{patterns,snakes}
+\usetikzlibrary{babel}
+\usetikzlibrary{scopes,intersections}
+\usetikzlibrary{decorations.pathreplacing}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\newcommand*{\boxcolor}{red}
+\makeatletter
+\renewcommand{\boxed}[1]{\textcolor{\boxcolor}{%
+\tikz[baseline={([yshift=-1ex]current bounding box.center)}] \node [rectangle, minimum width=1ex,rounded corners,draw] {\normalcolor\m@th$\displaystyle#1$};}}
+\makeatother
+
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+
+\usepackage{tikz-timing}
+\usetikztiminglibrary{beamer}
+\usepackage{sidecap}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows,shapes}
+\usetikzlibrary{patterns,snakes}
+\usetikzlibrary{babel}
+\usetikzlibrary{scopes,intersections}
+\usetikzlibrary{decorations.pathreplacing}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\input{macro-fig.tex}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%clock
+\usepackage[font=Helv,timeinterval=60]{tdclock}
+
+\title[Fault-tolerance for HPC]{Fault-tolerance Techniques for HPC}
+
+\subtitle{Habilitation \`a Diriger des Recherches\\
+  Universit\'e Claude Bernard Lyon 1\\
+  Laboratoire de l'Informatique du Parall\'elisme}
+
+\author[herault@icl.utk.edu]{Thomas Herault, University of Tennessee, Knoxville}
+
+\date[March 19, 2024]{}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+     {\tiny
+       \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide]
+    }
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+     {\tiny
+       \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide]
+    }
+  \end{frame}
+}
+
+\tikzset{
+  title overlay node/.style={
+    draw=white,fill=white,rounded corners,anchor=north west,
+  },
+}
+\def\tikzoverlay{%
+   \tikz[baseline,overlay]\node[title overlay node]
+}%
+
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+%\miniframesoff
+
+\begin{frame}
+  \titlepage
+
+\end{frame}
+
+\input{intro}
+\input{overview}
+\input{hierarchical}
+\input{ulfm}
+\input{conclusion}
+
+\end{document}

@@ -1,0 +1,122 @@
+\section{Global Overview}
+
+\frame{
+  \frametitle{Global Overview}
+
+  Two complementary approaches to Fault Tolerance
+  \begin{itemize}
+  \item General Purpose Fault Tolerance
+    \begin{itemize}
+    \item Checkpointing and rollback-recovery
+      \begin{itemize}
+      \item Experimental approach: implementing new protocols and evaluating them in 'real' applications / deployments
+      \item Performance models approach: design mathematical models to project performance at scale or under new assumptions
+      \end{itemize}
+    \end{itemize}
+  \item Application-Specific Fault Tolerance
+    \begin{itemize}
+    \item Design / adapt communication middlewares to write fault-tolerant applications
+    \item Design new fault-tolerance schemes for parallel applications
+    \end{itemize}
+  \end{itemize}
+
+  Task-Based Runtime Systems and Fault Tolerance
+  \begin{itemize}
+  \item New runtime systems and programming interfaces for modern hardware architectures
+  \item Design fault-tolerant applications over TBRS
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{Overview: General Purpose Fault Tolerance}
+
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      Experimental approach: MPICH-V
+      \begin{itemize}
+      \item Coordinated Rollback-Recovery
+        \begin{itemize}
+        \item Blocking/Non Blocking
+        \end{itemize}
+      \item Uncoordinated Rollback-Recovery
+        \begin{itemize}
+        \item Message Logging
+        \item Optimistic / Pessimistic / Causal
+        \end{itemize}
+      \item Hierarchical Approach
+      \end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      Performance Models for Rollback-Recovery
+      \begin{itemize}
+      \item \textcolor{blue}{Young-Daly}
+      \item \textcolor{blue}{Hierarchical Checkpointing}
+      \item In-Memory Checkpointing
+      \item Managing I/O Contention
+      \end{itemize}
+    \end{column}
+  \end{columns}
+}
+
+\frame{
+  \frametitle{Overview: Application-Specific Fault-Tolerance}
+  
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      User-Level Failure Mitigation
+      \begin{itemize}
+      \item Specification / Standardization
+      \item \textcolor{blue}{Failure Detection}
+      \item \textcolor{blue}{Consensus}
+      \item Silent Errors
+      \end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      Roll-forward fault-tolerance
+      \begin{itemize}
+      \item ABFT for dense matrix factorization
+      \item Composite Approach: ABFT \& Checkpointing
+      \item Moldable Applications
+      \end{itemize}
+    \end{column}
+  \end{columns}
+}
+
+\frame{
+  \frametitle{Overview: Task-Based Runtime Systems}
+  
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      Parallel Runtime Scheduler and Execution Controller (PaRSEC)
+      \begin{itemize}
+      \item Micro task (task scheduling overhead $\sim 200ns$)
+      \item Distributed (runs with thousands of nodes)
+      \item Hybrid (Intel, AMD, NVIDIA GPUs)
+      \item Implicit data movement (from device to device, in the background)
+      \item Multiple programming interfaces
+        \begin{itemize}
+        \item Parameterized Task Graphs
+        \item Dynamic Task Discovery
+        \item Template Task Graphs
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+      \item Applications:
+        \begin{itemize}
+        \item Dense Linear Algebra (DPLASMA)
+        \item Sparse Linear Algebra (PaStiX, TiledArray)
+        \item Quantum Chemistry (NWChem, MPQC)
+        \item Multi-representation (HiCMA)
+        \end{itemize}
+      \item Node-to-node migratable tasks
+      \item Resilient extensions
+        \begin{itemize}
+        \item Resilient to Silent Data Corruptions via Algorithm-Based Fault-Tolerance validation
+        \item Task-based checkpoint and partial rollback-recovery
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+}
