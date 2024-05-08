@@ -387,80 +387,80 @@
   
 \end{frame}
 
-\begin{frame}
-  \frametitle{Waste in failure-free execution}
+%% \begin{frame}
+%%   \frametitle{Waste in failure-free execution}
 
-\vfill
-\centering
-\begin{tabular}{cc}
-\begin{minipage}{.55\textwidth}
- \includegraphics[width=\textwidth]{PeriodicCoordinatedCkpt.png}
-\end{minipage}
-&
-\begin{minipage}{.65\textwidth}
-\begin{itemize}
-      \item  \Time[base]: application base time
-       \item \Time[FF]: with periodic checkpoints\\
-       but failure-free
- \end{itemize}
- \end{minipage}
- \end{tabular}
+%% \vfill
+%% \centering
+%% \begin{tabular}{cc}
+%% \begin{minipage}{.55\textwidth}
+%%  \includegraphics[width=\textwidth]{PeriodicCoordinatedCkpt.png}
+%% \end{minipage}
+%% &
+%% \begin{minipage}{.65\textwidth}
+%% \begin{itemize}
+%%       \item  \Time[base]: application base time
+%%        \item \Time[FF]: with periodic checkpoints\\
+%%        but failure-free
+%%  \end{itemize}
+%%  \end{minipage}
+%%  \end{tabular}
  
-$$\Time[FF]  =  \Time[base] + \#checkpoints \times \Cr$$
-$$\#checkpoints  = 
-\left\lceil\frac{\Time[base]}{\period-\Cr}\right\rceil
-\sim \frac{\Time[base] }{\period-\Cr} \text{ (valid for large jobs)}$$
+%% $$\Time[FF]  =  \Time[base] + \#checkpoints \times \Cr$$
+%% $$\#checkpoints  = 
+%% \left\lceil\frac{\Time[base]}{\period-\Cr}\right\rceil
+%% \sim \frac{\Time[base] }{\period-\Cr} \text{ (valid for large jobs)}$$
 
-\red{$$\Waste[FF] = \frac{\Time[FF]-\Time[base]}{\Time[FF]} = \frac{\Cr}{\period}$$}
+%% \red{$$\Waste[FF] = \frac{\Time[FF]-\Time[base]}{\Time[FF]} = \frac{\Cr}{\period}$$}
 
-\end{frame}
+%% \end{frame}
 
-\begin{frame}
-    \frametitle{Waste due to failures}
+%% \begin{frame}
+%%     \frametitle{Waste due to failures}
     
-\begin{center}
-\includegraphics[width=0.95\textwidth]{NewYvesCoordinated.png}
-\end{center}
-$$\Tlost= \D+\R+ \frac{\period}{2}$$
+%% \begin{center}
+%% \includegraphics[width=0.95\textwidth]{NewYvesCoordinated.png}
+%% \end{center}
+%% $$\Tlost= \D+\R+ \frac{\period}{2}$$
   
-\red{$$\Waste[fail] = \frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)$$}
+%% \red{$$\Waste[fail] = \frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)$$}
 
 
-\end{frame}
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Total waste}
+%% \begin{frame}
+%%   \frametitle{Total waste}
  
-\centering
-\input{daly.tex}
+%% \centering
+%% \input{daly.tex}
 
-$$\Waste= \frac{\Time[final]-\Time[base]}{\Time[final]}$$
-$$1 - \Waste = (1-\Waste[FF])(1-\Waste[fail])$$
+%% $$\Waste= \frac{\Time[final]-\Time[base]}{\Time[final]}$$
+%% $$1 - \Waste = (1-\Waste[FF])(1-\Waste[fail])$$
 
-\red{$$\Waste = \frac{\Cr}{\period} + \left( 1 -  \frac{\Cr}{\period} \right) 
-	\frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)$$}
-\end{frame}
+%% \red{$$\Waste = \frac{\Cr}{\period} + \left( 1 -  \frac{\Cr}{\period} \right) 
+%% 	\frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)$$}
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Waste minimization}
+%% \begin{frame}
+%%   \frametitle{Waste minimization}
  
 
-$$\Waste = \frac{\Cr}{\period} + \left( 1 -  \frac{\Cr}{\period} \right) 
-	\frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)$$
+%% $$\Waste = \frac{\Cr}{\period} + \left( 1 -  \frac{\Cr}{\period} \right) 
+%% 	\frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)$$
 
 
-$$\Waste =  \frac{u}{\period} + v + w \period$$
-$$u=\Cr \big( 1 - \frac{\D+\R}{\mu} \big) \qquad v =  \frac{\D+\R- \Cr/2}{\mu} \qquad w= \frac{1}{2\mu}$$
+%% $$\Waste =  \frac{u}{\period} + v + w \period$$
+%% $$u=\Cr \big( 1 - \frac{\D+\R}{\mu} \big) \qquad v =  \frac{\D+\R- \Cr/2}{\mu} \qquad w= \frac{1}{2\mu}$$
 
 
-\vfill
-\noindent
-$\Waste$  minimized for $\period = \sqrt{\frac{u}{w}}$
+%% \vfill
+%% \noindent
+%% $\Waste$  minimized for $\period = \sqrt{\frac{u}{w}}$
 
 
-\red{$$\T = \sqrt{2(\mu - (\D+\R)) \Cr}$$}
+%% \red{$$\T = \sqrt{2(\mu - (\D+\R)) \Cr}$$}
 
-\end{frame}
+%% \end{frame}
 
 \begin{frame}
 \frametitle{Optimal checkpointing interval}
@@ -520,139 +520,174 @@ $\Waste$  minimized for $\period = \sqrt{\frac{u}{w}}$
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Hierarchical Checkpointing: Failure during computing phase}
+%% \begin{frame}
+%%   \frametitle{Hierarchical Checkpointing: Failure during computing phase}
 
-  \includegraphics{hierarchical_failure_comp.png}
+%%   \includegraphics{hierarchical_failure_comp.png}
 
-  \Overhead: $T_{lost}+\alpha(G-g+1)C$\\
-  Expectation: $T_{lost}= \frac{1}{2}(T-G.C)$\\
-  Approximated \Overhead: $\frac{T-G.C}{2}+\alpha(G-g+1)C$
+%%   \Overhead: $T_{lost}+\alpha(G-g+1)C$\\
+%%   Expectation: $T_{lost}= \frac{1}{2}(T-G.C)$\\
+%%   Approximated \Overhead: $\frac{T-G.C}{2}+\alpha(G-g+1)C$
   
-\end{frame}
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Failure during checkpoint phase: Failure before checkpoint}
+%% \begin{frame}
+%%   \frametitle{Failure during checkpoint phase: Failure before checkpoint}
 
-  \includegraphics{hierarchical_failure_before_ckpt.png}
+%%   \includegraphics{hierarchical_failure_before_ckpt.png}
 
-  Average \Overhead~for group $g$ (for $2 \leq g \leq G$):
-    \begin{multline*}
-      \frac{1}{g-1}\sum_{s=0}^{g-2} \left(T +
-        ((\alpha-1)G+\alpha(-g+s+2)).C(q)\right) + D(q) + R(q)\\
-      = T + D(q)+R(q)+\left((\alpha-1)G-\alpha\frac{g-2}{2}\right).C(q)
-    \end{multline*}
+%%   Average \Overhead~for group $g$ (for $2 \leq g \leq G$):
+%%     \begin{multline*}
+%%       \frac{1}{g-1}\sum_{s=0}^{g-2} \left(T +
+%%         ((\alpha-1)G+\alpha(-g+s+2)).C(q)\right) + D(q) + R(q)\\
+%%       = T + D(q)+R(q)+\left((\alpha-1)G-\alpha\frac{g-2}{2}\right).C(q)
+%%     \end{multline*}
   
-\end{frame}
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Failure during checkpoint phase: Failure during checkpoint}
+%% \begin{frame}
+%%   \frametitle{Failure during checkpoint phase: Failure during checkpoint}
 
-  \includegraphics{hierarchical_failure_during_ckpt.png}
+%%   \includegraphics{hierarchical_failure_during_ckpt.png}
 
-  \Overhead = $T+(\alpha-1)G.C + T_{lost}$
+%%   \Overhead = $T+(\alpha-1)G.C + T_{lost}$
   
-  Expectation: $T_{lost} = \frac{C}{2}$
+%%   Expectation: $T_{lost} = \frac{C}{2}$
 
-  Approximated \Overhead  $$T+(\alpha-1)G.C(q)+\frac{C(q)}{2}$$
+%%   Approximated \Overhead  $$T+(\alpha-1)G.C(q)+\frac{C(q)}{2}$$
   
-\end{frame}
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Failure during checkpoint phase: Failure after checkpoint}
+%% \begin{frame}
+%%   \frametitle{Failure during checkpoint phase: Failure after checkpoint}
 
-  \includegraphics{hierarchical_failure_after_ckpt.png}
+%%   \includegraphics{hierarchical_failure_after_ckpt.png}
 
-  \Overhead = $ \alpha(s+1)C$
+%%   \Overhead = $ \alpha(s+1)C$
 
-  Average \Overhead~for group $g$ (for $1 \leq g \leq G-1$): 
-  \begin{multline*}
-    \frac{1}{G-g}\sum_{s=1}^{G-g}\left(\alpha(s+1)C(q)\right)= \alpha\frac{G-g+3}{2}C(q)
-  \end{multline*}
+%%   Average \Overhead~for group $g$ (for $1 \leq g \leq G-1$): 
+%%   \begin{multline*}
+%%     \frac{1}{G-g}\sum_{s=1}^{G-g}\left(\alpha(s+1)C(q)\right)= \alpha\frac{G-g+3}{2}C(q)
+%%   \end{multline*}
   
-\end{frame}
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Average waste for failures during checkpointing
-    phase}
+%% \begin{frame}
+%%   \frametitle{Average waste for failures during checkpointing
+%%     phase}
   
-  Average \Overhead\ when the failing-group $g$ fails
+%%   Average \Overhead\ when the failing-group $g$ fails
 
-  Overall average \Overhead: $\ockpt = $\\[-5mm]
-  \begin{multline*}
-    \frac{1}{G} ( (g\!-\!1) . \obckpt +
-      1.  \odckpt\\ + (G\!-\!g) . \oackpt)
-  \end{multline*}
-  \vfill
-    Average over all groups:
-    \begin{multline*}
-      \avgockpt =\\ \frac{G+1}{2G}T + \frac{\alpha
-        C(q)(G+3)}{2}+\frac{C(q)(1-2\alpha)}{2G} -\frac{C(q)(G+1)}{2}
-    \end{multline*}
-\end{frame}
+%%   Overall average \Overhead: $\ockpt = $\\[-5mm]
+%%   \begin{multline*}
+%%     \frac{1}{G} ( (g\!-\!1) . \obckpt +
+%%       1.  \odckpt\\ + (G\!-\!g) . \oackpt)
+%%   \end{multline*}
+%%   \vfill
+%%     Average over all groups:
+%%     \begin{multline*}
+%%       \avgockpt =\\ \frac{G+1}{2G}T + \frac{\alpha
+%%         C(q)(G+3)}{2}+\frac{C(q)(1-2\alpha)}{2G} -\frac{C(q)(G+1)}{2}
+%%     \end{multline*}
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Total waste}
+%% \begin{frame}
+%%   \frametitle{Total waste}
   
-  $$
-  \begin{array}{l}
-    \displaystyle \Waste[FF] =  \frac{T-\Work}{T} \text{ with } \Work = T - (1-\alpha) G C(q)\\
-    \displaystyle \Waste[fail] = \frac{1}{\muplatform} \bigg( \dgroup + \rgroup + \Overhead \bigg) \text{ with } \\[3mm]
-    \displaystyle \Overhead =   \frac{\T\!-\!\ngroups\cgroup}{\T} \ocomp +  \frac{\ngroups\cgroup}{\T} \ockpt \\[5mm]
-      \displaystyle \Waste = \Waste[FF] + \Waste[fail] - \Waste[FF] \Waste[fail]
- \end{array}
- $$ 
-\end{frame}
+%%   $$
+%%   \begin{array}{l}
+%%     \displaystyle \Waste[FF] =  \frac{T-\Work}{T} \text{ with } \Work = T - (1-\alpha) G C(q)\\
+%%     \displaystyle \Waste[fail] = \frac{1}{\muplatform} \bigg( \dgroup + \rgroup + \Overhead \bigg) \text{ with } \\[3mm]
+%%     \displaystyle \Overhead =   \frac{\T\!-\!\ngroups\cgroup}{\T} \ocomp +  \frac{\ngroups\cgroup}{\T} \ockpt \\[5mm]
+%%       \displaystyle \Waste = \Waste[FF] + \Waste[fail] - \Waste[FF] \Waste[fail]
+%%  \end{array}
+%%  $$ 
+%% \end{frame}
 
-\begin{frame}
-  \frametitle{Accounting for message logging: Impact on work}
+%% \begin{frame}
+%%   \frametitle{Accounting for message logging: Impact on work}
 
- \begin{itemize}
-  \item \frownie Logging messages slows down execution:\\
-  $\Rightarrow$ $\Work$ becomes $\red{\lambda} \Work$, where $0 < \lambda <1$\\
-  Typical value: $ \lambda \sim 0.98$
+%%  \begin{itemize}
+%%   \item \frownie Logging messages slows down execution:\\
+%%   $\Rightarrow$ $\Work$ becomes $\red{\lambda} \Work$, where $0 < \lambda <1$\\
+%%   Typical value: $ \lambda \sim 0.98$
 
-  \item \smiley Re-execution after a failure is faster:\\
-  $\Rightarrow$ $\Overhead$ becomes $\frac{\Overhead}{\red{\rho}}$, where $\rho \in[1..2]$\\
-   Typical value: $ \rho \sim 1.5$
+%%   \item \smiley Re-execution after a failure is faster:\\
+%%   $\Rightarrow$ $\Overhead$ becomes $\frac{\Overhead}{\red{\rho}}$, where $\rho \in[1..2]$\\
+%%    Typical value: $ \rho \sim 1.5$
   
-  \end{itemize}
+%%   \end{itemize}
 
-\vfill
-$$\Waste[FF] = \frac{\T - \red{\lambda} \Work}{\T}$$
-$$\Waste[fail] = \frac{1}{\muplatform} \bigg( \dgroup + \rgroup + 
-\frac{\Overhead}{\red{\rho}} \bigg) $$
-\end{frame}
+%% \vfill
+%% $$\Waste[FF] = \frac{\T - \red{\lambda} \Work}{\T}$$
+%% $$\Waste[fail] = \frac{1}{\muplatform} \bigg( \dgroup + \rgroup + 
+%% \frac{\Overhead}{\red{\rho}} \bigg) $$
+%% \end{frame}
 
 
-\begin{frame}
-  \frametitle{Accounting for message logging: Impact on checkpoint size}
+%% \begin{frame}
+%%   \frametitle{Accounting for message logging: Impact on checkpoint size}
 
- \begin{itemize}
- \item Inter-groups messages logged continuously
- \item  Checkpoint size increases with amount of work executed before a checkpoint
- \item $\cgroupbase$: Checkpoint size of a group without message logging
-$$
-\cgroup = \cgroupbase (1 + \amountlog \Work) \Leftrightarrow \color{red}{\amountlog = \frac{\cgroup - \cgroupbase}{\cgroupbase \Work}}
-$$
-%\begin{overlayarea}{\linewidth}{2cm}{
-$$\Work = \lambda (\T - (1-\workduringckpt)\ngroups\cgroup)$$
-$$\cgroup = \frac{ \cgroupbase (1 + \amountlog \lambda \T)}{1+ \ngroups \cgroupbase \amountlog \lambda (1-\workduringckpt)}$$
-
-%\end{overlayarea}
-%% \item
-%% Constraint $ \ngroups \cgroup \leq \T$ translates into 
+%%  \begin{itemize}
+%%  \item Inter-groups messages logged continuously
+%%  \item  Checkpoint size increases with amount of work executed before a checkpoint
+%%  \item $\cgroupbase$: Checkpoint size of a group without message logging
 %% $$
-%% \ngroups \cgroupbase \amountlog \lambda \workduringckpt \leq 1 \text{ and } \T \geq \frac{\ngroups \cgroupbase }{1- \ngroups \cgroupbase \amountlog \lambda \workduringckpt} $$
+%% \cgroup = \cgroupbase (1 + \amountlog \Work) \Leftrightarrow \color{red}{\amountlog = \frac{\cgroup - \cgroupbase}{\cgroupbase \Work}}
+%% $$
+%% %\begin{overlayarea}{\linewidth}{2cm}{
+%% $$\Work = \lambda (\T - (1-\workduringckpt)\ngroups\cgroup)$$
+%% $$\cgroup = \frac{ \cgroupbase (1 + \amountlog \lambda \T)}{1+ \ngroups \cgroupbase \amountlog \lambda (1-\workduringckpt)}$$
 
- \end{itemize}
+%% %\end{overlayarea}
+%% %% \item
+%% %% Constraint $ \ngroups \cgroup \leq \T$ translates into 
+%% %% $$
+%% %% \ngroups \cgroupbase \amountlog \lambda \workduringckpt \leq 1 \text{ and } \T \geq \frac{\ngroups \cgroupbase }{1- \ngroups \cgroupbase \amountlog \lambda \workduringckpt} $$
 
- \vfill
- Minimize $\Waste$ subject to:
-  \begin{itemize}
-  \item $G C(q) \leq T$ (by construction)
-  \item Gets complicated! Use computer algebra software \frownie
-  \end{itemize}
+%%  \end{itemize}
+
+%%  \vfill
+%%  Minimize $\Waste$ subject to:
+%%   \begin{itemize}
+%%   \item $G C(q) \leq T$ (by construction)
+%%   \item Gets complicated! Use computer algebra software \frownie
+%%   \end{itemize}
+%% \end{frame}
+
+\begin{frame}
+  \frametitle{Modeling Hierarchical Protocols}
+
+  \begin{center}
+    \includegraphics[scale=0.7]{hierarchical_failure_after_ckpt.png}
+  \end{center}
+
+  \begin{columns}
+    \begin{column}{.49\textwidth}
+      \begin{itemize}
+      \item Which group is subject to failure
+      \item Failure between two checkpoint waves
+      \item Failure within a wave
+        \begin{itemize}
+        \item but before the group checkpoint
+        \item during the group checkpoint
+        \item after the group checkpoint
+        \end{itemize}
+      \end{itemize}
+    \end{column}\begin{column}{.49\textwidth}
+      \begin{itemize}
+      \item Message logging impacts:
+        \begin{itemize}
+        \item Work speed (re-execution is slightly faster)
+        \item Checkpoint size (and duration)
+          \begin{itemize}
+          \item Checkpoint size increases with amount of work executed before the checkpoint
+          \end{itemize}
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
 \end{frame}
 
 \begin{frame}

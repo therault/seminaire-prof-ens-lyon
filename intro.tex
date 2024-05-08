@@ -1,7 +1,7 @@
 % !TEX root =  sc19-main.tex
 
 
-\section[Introduction]{Introduction -- Failures in Petascale Systems}
+\section[Introduction]{Introduction}
 
 % Study on old supercomputers (Athena, Jaguar, Jaguar Petaflop,
 % Kraken)
@@ -34,6 +34,47 @@
 %  https://ieeexplore.ieee.org/abstract/document/7925285
 % Only interesting for the definition of RAS, downtime availability,
 % etc.
+
+\frame{
+  \includegraphics[width=\textwidth]{figures/frontier-architecture.jpg}
+
+  \begin{overlayarea}{\linewidth}{0cm}
+    \only<2>{%
+      \vspace{-9cm}
+      \begin{center}
+        \begin{minipage}{.7\linewidth}
+          \includegraphics[width=\linewidth]{figures/hpc-applications.png}
+        \end{minipage}
+      \end{center}
+    }
+  \end{overlayarea}
+}
+
+\frame{
+  \includegraphics[width=\textwidth]{figures/top500.jpg}
+}
+
+\input{overview}
+
+\frame{
+  \frametitle{Focus of this talk}
+
+  Resilience techniques for High Performance Computing
+  \begin{itemize}
+  \item Rollback-recovery protocols
+    \begin{itemize}
+    \item Coordinated rollback-recovery
+    \item Noncoordinated rollback-recovery
+    \item Hierarchical protocols
+    \end{itemize}
+  \item Application-specific fault-tolerance
+    \begin{itemize}
+    \item User-Level Failure Mitigation
+    \item Failure detection and notification for HPC
+    \item Early Returning Agreement for ULFM
+    \end{itemize}
+  \end{itemize}
+}
 
 \frame{
   \frametitle{Effect of Scale}
