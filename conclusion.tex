@@ -48,12 +48,12 @@
   \begin{itemize}
   \item Scale remains the adversary
     \begin{itemize}
-    \item End of Dennard scaling (ca 2006)
+    \item End of Dennard scaling (2006)
     \item Moore's Law survives (more or less) by doubling cores (manycore)
     \item or thanks to addition of accelerators
     \end{itemize}
-  \item \quesley Will we continue to double the MTBF of nodes at the same speed we double their power?
-  \item \quesley Market argument: no-one will commission a supercomputer with $MTBF < \sim 12h$
+  \item ~\quesley Will we continue to double the MTBF of nodes at the same speed we double their power?
+  \item ~\quesley Market argument: no-one will commission a supercomputer with $MTBF < \sim 12h$
     \begin{itemize}
     \item \frownie See anecdotal evidence with Sunway TaihuLight
     \item \smiley What is the cost of keeping up with the component reliability increase?\\
@@ -130,7 +130,7 @@
 }
 
 \frame{
-  \frametitle{Applying Algorithm Based Fault Tolerance to TBRS}
+  \frametitle{Applying Algorithm Based Fault Tolerance to Task-Based Runtime Systems}
 
   \begin{itemize}
   \item ABFT: bulk-synchronous 'by nature'
@@ -138,12 +138,12 @@
     \item Need to keep the cheksum valid at each step
     \item Efficient \emph{because} checksum is updated by only extending synchronous operation
     \end{itemize}
-  \item TBRS: asynchronous 'by nature'
+  \item Task-Based Runtime Systems: asynchronous 'by nature'
     \begin{itemize}
     \item Add strict control flow to keep checksum up to date? \frownie
     \item How to react to failures? Conditional DAG?
     \end{itemize}
-  \item ABFT + TBRS:
+  \item ABFT + Tasks:
     \begin{itemize}
     \item Extend DAG with checksum / checksum update tasks
     \item Introduce scheduling priorities to make sure checksums are updated
@@ -154,16 +154,6 @@
       \end{itemize}
     \end{itemize}
   \end{itemize}
-}
-
-\frame{
-  \frametitle{Optimal Checkpointing and Task-Based Runtime Systems}
-  
-    Scheduling checkpoints optimally in TBRS is NP-complete!
-
-    Yet, a TBRS is a parallel application
-
-    And we know what is the \emph{optimal} checkpoint period of a parallel application.
 }
 
 \frame{
@@ -178,7 +168,7 @@
     \item only failed processes need to restart (\quesley -- but surviving processes need to wait in tightly-coupled applications)
       \begin{itemize}
       \item \smiley noncoordinated should be revisited for \emph{moldable} applications
-      \item \smiley TBRS with work migration are ideal candidates
+      \item \smiley Task Systems with work migration are ideal candidates
       \end{itemize}
     \end{itemize}
 }
@@ -189,9 +179,9 @@
   \begin{itemize}
   \item Energy! Silent Errors!
   \item Stragglers
-  \item ABFT + TBRS
-  \item Optimality of checkpointing in TBRS
-  \item Noncoordinated Checkpointing in TBRS
+  \item ABFT + Tasks
+  \item Optimality of checkpointing in Task Systems
+  \item Noncoordinated Checkpointing in Task Systems
   \end{itemize}
 
   \vspace{\fill}
@@ -208,7 +198,7 @@
     \only<2>{%
       \vspace{-7cm}
       \begin{center}
-        \begin{minipage}{.9\linewidth}
+        \begin{minipage}{\linewidth}
           \begin{block}{Nothing about AI !?!}
 
             Roll-forward approaches are probably interesting for AI applications:
@@ -219,7 +209,7 @@
 
             Using Deep Learning / Reinforced Learning:
             \begin{itemize}
-            \item Place checkpoints in TBRS?
+            \item Place checkpoints in Task Systems?
             \item Generate missing data for iterative/converging applications
             \item Silent Data Corruption Detector?
             \end{itemize}

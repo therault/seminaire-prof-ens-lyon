@@ -1,0 +1,10 @@
+*dot2tex-fig*.dot
+*dot2tex-fig*.tex
+main.aux
+main.log
+main.nav
+main.out
+main.pdf
+main.snm
+main.toc
+main.vrb
