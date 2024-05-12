@@ -1,5 +1,6 @@
 *dot2tex-fig*.dot
 *dot2tex-fig*.tex
+*~
 main.aux
 main.log
 main.nav
@@ -8,6 +9,14 @@ main.pdf
 main.snm
 main.toc
 main.vrb
+inria.aux
+inria.log
+inria.nav
+inria.out
+inria.pdf
+inria.snm
+inria.toc
+inria.vrb
 projet-enseignement.aux
 projet-enseignement.log
 projet-enseignement.nav
