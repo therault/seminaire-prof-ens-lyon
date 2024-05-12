@@ -1,4 +1,4 @@
-\section{Research Project and Integration in TOPAL}
+\section{Research Program and Integration in TOPAL}
 
 \frame{
   \frametitle{Current Practice for Fault Tolerance in HPC}
@@ -80,13 +80,17 @@
   Application-specific fault tolerance might help
   \begin{itemize}
   \item Not necessarily (or not only) to correct failures
-  \item Mostly to detect failures
+  \item But also to detect failures
   \end{itemize}
 
   Overhead is negligible!
 
   \begin{center}
     \textcolor{red}{Advocating for hardened/trustworthy version of popular computational libraries}
+
+    \textcolor{red}{Both application domains in TOPAL could benefit for hardened versions (Multi-Linear Algebra and Solvers; Training and Inference for DNNs)}
+
+    \textcolor{red}{(Also good targets in CONCACE)}
   \end{center}  
 \end{frame}
 
@@ -102,7 +106,7 @@
     \item[] ~
     \item Cloud-HPC convergence: CPUs are billed as soon as allocated, even if the application cannot be deployed
     \end{itemize}
-  \item Using stranded energy in Cloud/HPC
+  \item Using stranded energy in Cloud or HPC
     \begin{itemize}
     \item Non-dispatchable renewable energy sources to power HPC
     \item $\Rightarrow$ Power cost varies with time (soft version)
@@ -110,6 +114,9 @@
     \item $\Rightarrow$ Job scheduler may have to kill apps. Resilience can help.
     \end{itemize}
   \end{itemize}
+  \begin{center}
+    \textcolor{red}{Fits well the Energy Minimization axis in TOPAL}
+  \end{center}
 \end{frame}
 
 \frame{
@@ -127,6 +134,10 @@
       \end{itemize}
     \end{itemize}
   \end{itemize}
+
+  \begin{center}
+    \textcolor{red}{Mid-term goals: evaluate how this can apply to DNN training (2nd TOPAL application domain)}
+  \end{center}
 }
 
 \frame{
@@ -154,6 +165,10 @@
       \end{itemize}
     \end{itemize}
   \end{itemize}
+
+  \begin{center}
+    \textcolor{red}{Possible collaborations with STORM; complement the expertise in TOPAL}
+  \end{center}
 }
 
 \frame{
@@ -171,57 +186,10 @@
       \item \smiley Task Systems with work migration are ideal candidates
       \end{itemize}
     \end{itemize}
+
+    \begin{center}
+      \textcolor{red}{Long term goal: New theme in TOPAL. Possible collaborations with CONCACE, STORM and TADAAM}
+    \end{center}
 }
-
-\frame{
-  \frametitle{Future Work}
-
-  \begin{itemize}
-  \item Energy! Silent Errors!
-  \item Stragglers
-  \item ABFT + Tasks
-  \item Optimality of checkpointing in Task Systems
-  \item Noncoordinated Checkpointing in Task Systems
-  \end{itemize}
-
-  \vspace{\fill}
-  
-  \centering Thank you
-
-  \vspace{\fill}
-  
-  \centering Questions?
-
-  \vspace{\fill}
-
-    \begin{overlayarea}{\linewidth}{0cm}
-    \only<2>{%
-      \vspace{-7cm}
-      \begin{center}
-        \begin{minipage}{\linewidth}
-          \begin{block}{Nothing about AI !?!}
-
-            Roll-forward approaches are probably interesting for AI applications:
-            \begin{itemize}
-            \item Relaxed collectives / stragglers management
-            \item Completely ignore slow processes contribution?
-            \end{itemize}
-
-            Using Deep Learning / Reinforced Learning:
-            \begin{itemize}
-            \item Place checkpoints in Task Systems?
-            \item Generate missing data for iterative/converging applications
-            \item Silent Data Corruption Detector?
-            \end{itemize}
-          \end{block}
-        \end{minipage}
-      \end{center}
-    }
-  \end{overlayarea}%
-
-}
-
-\miniframesoff
-\section*{}
 
 
