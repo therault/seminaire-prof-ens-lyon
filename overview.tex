@@ -3,7 +3,7 @@
 %%
 
 \frame{
-    \frametitle{Background\only<2>{ (software development and dissemination)}\only<3>{ (Projects)}}
+    \frametitle{Background\only<3>{ (software development and dissemination)}\only<2>{ (Funding Projects)}}
 
     \pgfplotsset{
         /pgf/number format/year/.style={fixed, 1000 sep={}}
@@ -53,62 +53,87 @@
 
         \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (13,-2.5) rectangle (24,-3.1);
         \node[align=center,text width=12cm] at (18.5,-2.8) {Performance Modeling for Fault Tolerance};
-       
-        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (3,-3.3) rectangle (10,-3.9);
-        \node[align=center,text width=6cm] at (6.5,-3.6) {Rollback recovery in MPICH};
 
     \only<2>{
-        \fill[fill=blue,fill opacity=.6] (3,-4.5) rectangle (10,-4.7);
-        \node[align=left,text width=6cm,color=blue,anchor=west] at (3,-4.3) {\textbf{MPICH-V}};
-        \fill[fill=yellow,fill opacity=1] (8,-4.6) circle (3pt);
-        \node[align=center,text width=6cm,color=blue] at (8,-4.3) {MPICH (distcont.)};
-    }
-        
-        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (10,-3.3) rectangle (24,-3.9);
-        \node[align=center,text width=18cm] at (17,-3.6) {Task-Based Runtime Systems};
+        \fill[fill=red,fill opacity=.4] (7,-3.5) rectangle (11,-3.7);
+        \node[align=center,text width=3cm] at (9,-3.6) {\textbf{PI} SAFE-OS (ANR)};
 
-    \only<2>{
-        \fill[fill=brown,fill opacity=.6] (10,-4.5) rectangle (13,-4.7);
-        \node[align=left,text width=6cm,color=brown,anchor=west] at (10,-4.3) {\textbf{DAGuE}};
-        \fill[fill=brown,fill opacity=.6] (13,-4.5) rectangle (24,-4.7);
-        \node[align=left,text width=6cm,color=brown,anchor=west] at (13,-4.3) {\textbf{PaRSEC}};
-        \node[align=left,anchor=south west,color=brown] at (25,-4.3) {$\left\{\begin{tabular}{l}\textrm{DPLASMA (UTK)}\\\textrm{Chameleon (INRIA)}\\\textrm{PaSTIX (INRIA)}\\\textrm{HiCMA (KAUST)}\\\textrm{MADNESS (SBU)}\\\textrm{NWChemEx (NWU)}\end{tabular}\right.$};
+        \fill[fill=blue,fill opacity=.4] (16,-3.5) rectangle (20,-3.7);
+        \node[align=center,text width=3cm] at (18,-3.6) {\textbf{PI} SMURFS (NSF)};
     }
     
-        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (8,-4.9) rectangle (24,-5.5);
-        \node[align=center,text width=12cm] at (16,-5.2) {Fault Tolerant MPI, Application-Specific FT for HPC};
+        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (3,-4.1) rectangle (10,-4.7);
+        \node[align=center,text width=6cm] at (6.5,-4.4) {Rollback recovery in MPICH};
 
-    \only<2>{
-        \fill[fill=blue,fill opacity=.6] (11,-6.1) rectangle (24,-6.3);
-        \node[align=left,text width=6cm,color=blue,anchor=west] at (11,-5.9) {\textbf{User-Level Failure Mitigation}};
-        \fill[fill=yellow,fill opacity=1] (21,-6.2) circle (3pt);
-        \node[align=right,anchor=east,text width=6cm,color=blue] at (21.5,-5.9) {Open MPI};
-        \fill[fill=yellow,fill opacity=1] (22,-6.2) circle (3pt);
-        \node[align=left,anchor=west,text width=6cm,color=blue] at (21.5,-5.85) {MPICH};
-        \node[align=left,anchor=west,color=blue] at (25,-5.9) {$\left\{\begin{tabular}{l}\textrm{Fenix (SNL)}\\\textrm{CRAFT (RRZE)}\\\textrm{Resilient X10 (ANU)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{SAP database (Germany)}\\\textrm{NR-MPI (NUDT, China)}\end{tabular}\right.$};
-    }
-        
-        \fill[rounded corners=10pt,fill=red,fill opacity=0.2] (2,-4.9) rectangle (7,-5.5);
-        \node[align=center,text width=6cm] at (4.5,-5.2) {App. Prob. Model Checking};
+        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (10,-4.1) rectangle (24,-4.7);
+        \node[align=center,text width=18cm] at (17,-4.4) {Task-Based Runtime Systems};
 
-        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (12,-6.5) rectangle (24,-7.1);
-        \node[align=center,text width=18cm] at (18,-6.8) {Programming Interface for Irregular Task Systems};
+    \only<3>{
+        \fill[fill=blue,fill opacity=.6] (3,-5.3) rectangle (10,-5.5);
+        \node[align=left,text width=6cm,color=blue,anchor=west] at (3,-5.1) {\textbf{MPICH-V}};
+        \fill[fill=yellow,fill opacity=1] (8,-5.4) circle (3pt);
+        \node[align=center,text width=6cm,color=blue] at (8,-5.1) {MPICH (distcont.)};
 
-    \only<1>{
-        \node[align=left,anchor=south west,color=white,opacity=0] at (25,-7.5) {$\left\{\begin{tabular}{l}\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\end{tabular}\right.$};
-    }
-    \only<2>{
-        \fill[fill=brown,fill opacity=.6] (13,-7.7) rectangle (24,-7.9);
-        \node[align=left,text width=6cm,color=brown,anchor=west] at (13,-7.5) {\textbf{Template Task Graph}};
-        \node[align=left,anchor=north west,color=brown] at (25,-7.5) {$\left\{\begin{tabular}{l}\textrm{TiledArray (VT)}\\\textrm{MADNESS (SBU)}\\MPQC (VT)\end{tabular}\right.$};
+        \fill[fill=brown,fill opacity=.6] (10,-5.3) rectangle (13,-5.5);
+        \node[align=left,text width=6cm,color=brown,anchor=west] at (10,-5.1) {\textbf{DAGuE}};
+        \fill[fill=brown,fill opacity=.6] (13,-5.3) rectangle (24,-5.5);
+        \node[align=left,text width=6cm,color=brown,anchor=west] at (13,-5.1) {\textbf{PaRSEC}};
+        \node[align=left,anchor=south west,color=brown] at (25,-5.1) {$\left\{\begin{tabular}{l}\textrm{DPLASMA (UTK)}\\\textrm{Chameleon (INRIA)}\\\textrm{PaSTIX (INRIA)}\\\textrm{HiCMA (KAUST)}\\\textrm{MADNESS (SBU)}\\\textrm{NWChemEx (NWU)}\end{tabular}\right.$};
     }
     
-        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (15,-8.1) rectangle (24,-8.7);
-        \node[align=center,text width=18cm] at (19.5,-8.4) {Memory-Constrained Scheduling of Tasks};
+    \only<2>{
+        \fill[fill=blue,fill opacity=.4] (6,-5.1) rectangle (9,-5.3);
+        \node[align=center,text width=3cm] at (7.5,-5.2) {\textbf{coPI} QosCosGrid (STREP)};
+        \fill[fill=brown,fill opacity=.4] (16,-5.1) rectangle (23,-5.3);
+        \node[align=center,text width=3cm] at (19.5,-5.2) {\textbf{coPI} ECP PaRSEC (DoE)};
+    }
+
+        \fill[rounded corners=10pt,fill=red,fill opacity=0.2] (2,-5.7) rectangle (7,-6.3);
+        \node[align=center,text width=6cm] at (4.5,-6.0) {App. Prob. Model Checking};
+
+        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (8,-5.7) rectangle (24,-6.3);
+        \node[align=center,text width=12cm] at (16,-6.0) {Fault Tolerant MPI, Application-Specific FT for HPC};
+
+    \only<3>{
+        \fill[fill=blue,fill opacity=.6] (11,-6.9) rectangle (24,-7.1);
+        \node[align=left,text width=6cm,color=blue,anchor=west] at (11,-6.7) {\textbf{User-Level Failure Mitigation}};
+        \fill[fill=yellow,fill opacity=1] (21,-7.0) circle (3pt);
+        \node[align=right,anchor=east,text width=6cm,color=blue] at (21.5,-6.7) {Open MPI};
+        \fill[fill=yellow,fill opacity=1] (22,-7.0) circle (3pt);
+        \node[align=left,anchor=west,text width=6cm,color=blue] at (21.5,-6.75) {MPICH};
+        \node[align=left,anchor=west,color=blue] at (25,-6.7) {$\left\{\begin{tabular}{l}\textrm{Fenix (SNL)}\\\textrm{CRAFT (RRZE)}\\\textrm{Resilient X10 (ANU)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{SAP database (Germany)}\\\textrm{NR-MPI (NUDT, China)}\end{tabular}\right.$};
+    }
+
+    \only<2>{
+        \fill[fill=blue,fill opacity=.4] (17,-6.7) rectangle (23,-6.9);
+        \node[align=center,text width=3cm] at (19,-6.8) {\textbf{coPI} EVOLVE (NSF)};
+    }
+        
+
+        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (12,-7.3) rectangle (24,-7.9);
+        \node[align=center,text width=18cm] at (18,-7.6) {Programming Interface for Irregular Task Systems};
+
+    \only<1,2>{
+        \node[align=left,anchor=south west,color=white,opacity=0] at (25,-8.3) {$\left\{\begin{tabular}{l}\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\end{tabular}\right.$};
+    }
+    \only<3>{
+        \fill[fill=brown,fill opacity=.6] (13,-8.5) rectangle (24,-8.7);
+        \node[align=left,text width=6cm,color=brown,anchor=west] at (13,-8.3) {\textbf{Template Task Graph}};
+        \node[align=left,anchor=north west,color=brown] at (25,-8.3) {$\left\{\begin{tabular}{l}\textrm{TiledArray (VT)}\\\textrm{MADNESS (SBU)}\\MPQC (VT)\end{tabular}\right.$};
+    }
+    \only<2>{
+        \fill[fill=brown,fill opacity=.4] (14,-8.3) rectangle (19,-8.5);
+        \node[align=center,text width=3cm] at (16.5,-8.4) {\textbf{coPI} TESSE (NSF)};
+        \fill[fill=brown,fill opacity=.4] (19,-8.3) rectangle (25,-8.5);
+        \node[align=center,text width=3cm] at (22,-8.4) {\textbf{coPI};\textbf{PI} EPEXA (NSF)};
+    }
+    
+        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (15,-8.9) rectangle (24,-9.5);
+        \node[align=center,text width=18cm] at (19.5,-9.2) {Memory-Constrained Scheduling of Tasks};
 
     \end{tikzpicture}}
 }   
-
+    
 \frame{
   \frametitle{Background (Fault Tolerance)}
 
