@@ -3,7 +3,7 @@
 %%
 
 \frame{
-    \frametitle{Background}
+    \frametitle{Background\only<2>{ (software development and dissemination)}\only<3>{ (Projects)}}
 
     \pgfplotsset{
         /pgf/number format/year/.style={fixed, 1000 sep={}}
@@ -14,7 +14,7 @@
         \draw[->,line width=.2mm,ultra thick] (0,0) -- (25,0);
         \foreach \x in {0,...,24}{\draw[thick] (\x,0.2)--(\x,-0.2);}
         \foreach \x in {0,4,...,24}{\pgfmathsetmacro\result{\x + 2000}\node at (\x,-0.4) {\pgfmathprintnumber[year]{\result}};}
-
+    
         \fill[rounded corners=10pt,fill=black,fill opacity=0.2] (0,0.3) rectangle (3,-0.3);
         \node[align=center,text width=3cm] at (1.5,1) {Moniteur Normalien (Paris XI)};
 
@@ -48,28 +48,69 @@
         \fill[rounded corners=10pt,fill=red,fill opacity=0.2] (0,-2.5) rectangle (6,-3.1);
         \node[align=center,text width=6cm] at (3,-2.8) {Self-Stabilization, Dist. Alg.};
 
-        \fill[rounded corners=10pt,fill=black,fill opacity=0.2] (7,-2.5) rectangle (11,-3.1);
+        \fill[rounded corners=10pt,fill=red,fill opacity=0.2] (7,-2.5) rectangle (11,-3.1);
         \node[align=center,text width=6cm] at (9,-2.8) {``D\'efi S\'ecurit\'e''};
 
-        \fill[rounded corners=10pt,fill=purple,fill opacity=0.2] (13,-2.5) rectangle (24,-3.1);
+        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (13,-2.5) rectangle (24,-3.1);
         \node[align=center,text width=12cm] at (18.5,-2.8) {Performance Modeling for Fault Tolerance};
        
-        \fill[rounded corners=10pt,fill=green,fill opacity=0.2] (3,-3.3) rectangle (10,-3.9);
+        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (3,-3.3) rectangle (10,-3.9);
         \node[align=center,text width=6cm] at (6.5,-3.6) {Rollback recovery in MPICH};
 
+    \only<2>{
+        \fill[fill=blue,fill opacity=.6] (3,-4.5) rectangle (10,-4.7);
+        \node[align=left,text width=6cm,color=blue,anchor=west] at (3,-4.3) {\textbf{MPICH-V}};
+        \fill[fill=yellow,fill opacity=1] (8,-4.6) circle (3pt);
+        \node[align=center,text width=6cm,color=blue] at (8,-4.3) {MPICH (distcont.)};
+    }
+        
         \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (10,-3.3) rectangle (24,-3.9);
-        \node[align=center,text width=18cm] at (17,-3.6) {Task-Based Runtime Systems -- Prog. Inter.; Applications; Mem. Const. Alg.};
+        \node[align=center,text width=18cm] at (17,-3.6) {Task-Based Runtime Systems};
 
-        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (8,-4.1) rectangle (24,-4.7);
-        \node[align=center,text width=12cm] at (16,-4.4) {Fault Tolerant MPI, Application-Specific FT for HPC};
+    \only<2>{
+        \fill[fill=brown,fill opacity=.6] (10,-4.5) rectangle (13,-4.7);
+        \node[align=left,text width=6cm,color=brown,anchor=west] at (10,-4.3) {\textbf{DAGuE}};
+        \fill[fill=brown,fill opacity=.6] (13,-4.5) rectangle (24,-4.7);
+        \node[align=left,text width=6cm,color=brown,anchor=west] at (13,-4.3) {\textbf{PaRSEC}};
+        \node[align=left,anchor=south west,color=brown] at (25,-4.3) {$\left\{\begin{tabular}{l}\textrm{DPLASMA (UTK)}\\\textrm{Chameleon (INRIA)}\\\textrm{PaSTIX (INRIA)}\\\textrm{HiCMA (KAUST)}\\\textrm{MADNESS (SBU)}\\\textrm{NWChemEx (NWU)}\end{tabular}\right.$};
+    }
+    
+        \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (8,-4.9) rectangle (24,-5.5);
+        \node[align=center,text width=12cm] at (16,-5.2) {Fault Tolerant MPI, Application-Specific FT for HPC};
 
-        \fill[rounded corners=10pt,fill=black,fill opacity=0.2] (2,-4.1) rectangle (7,-4.7);
-        \node[align=center,text width=6cm] at (4.5,-4.4) {App. Prob. Model Checking};
+    \only<2>{
+        \fill[fill=blue,fill opacity=.6] (11,-6.1) rectangle (24,-6.3);
+        \node[align=left,text width=6cm,color=blue,anchor=west] at (11,-5.9) {\textbf{User-Level Failure Mitigation}};
+        \fill[fill=yellow,fill opacity=1] (21,-6.2) circle (3pt);
+        \node[align=right,anchor=east,text width=6cm,color=blue] at (21.5,-5.9) {Open MPI};
+        \fill[fill=yellow,fill opacity=1] (22,-6.2) circle (3pt);
+        \node[align=left,anchor=west,text width=6cm,color=blue] at (21.5,-5.85) {MPICH};
+        \node[align=left,anchor=west,color=blue] at (25,-5.9) {$\left\{\begin{tabular}{l}\textrm{Fenix (SNL)}\\\textrm{CRAFT (RRZE)}\\\textrm{Resilient X10 (ANU)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{SAP database (Germany)}\\\textrm{NR-MPI (NUDT, China)}\end{tabular}\right.$};
+    }
+        
+        \fill[rounded corners=10pt,fill=red,fill opacity=0.2] (2,-4.9) rectangle (7,-5.5);
+        \node[align=center,text width=6cm] at (4.5,-5.2) {App. Prob. Model Checking};
+
+        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (12,-6.5) rectangle (24,-7.1);
+        \node[align=center,text width=18cm] at (18,-6.8) {Programming Interface for Irregular Task Systems};
+
+    \only<1>{
+        \node[align=left,anchor=south west,color=white,opacity=0] at (25,-7.5) {$\left\{\begin{tabular}{l}\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\end{tabular}\right.$};
+    }
+    \only<2>{
+        \fill[fill=brown,fill opacity=.6] (13,-7.7) rectangle (24,-7.9);
+        \node[align=left,text width=6cm,color=brown,anchor=west] at (13,-7.5) {\textbf{Template Task Graph}};
+        \node[align=left,anchor=north west,color=brown] at (25,-7.5) {$\left\{\begin{tabular}{l}\textrm{TiledArray (VT)}\\\textrm{MADNESS (SBU)}\\MPQC (VT)\end{tabular}\right.$};
+    }
+    
+        \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (15,-8.1) rectangle (24,-8.7);
+        \node[align=center,text width=18cm] at (19.5,-8.4) {Memory-Constrained Scheduling of Tasks};
+
     \end{tikzpicture}}
 }   
 
 \frame{
-  \frametitle{My contributions to HPC (overview)}
+  \frametitle{Background (Fault Tolerance)}
 
   Two complementary approaches to Fault Tolerance
   \begin{itemize}
@@ -78,113 +119,127 @@
     \item Checkpointing and rollback-recovery
       \begin{itemize}
       \item Experimental approach: implementing new protocols and evaluating them in 'real' applications / deployments
-      \item Performance models approach: design mathematical models to project performance at scale or under new assumptions
+      \item Performance models approach: designing mathematical models to project performance at scale or under new assumptions
       \end{itemize}
     \end{itemize}
   \item Application-Specific Fault Tolerance
     \begin{itemize}
     \item Design / adapt communication middlewares to write fault-tolerant applications
-    \item Design new fault-tolerance schemes for parallel applications
+    \item Design and evaluate new fault-tolerance schemes for parallel applications
     \end{itemize}
   \end{itemize}
-
-  Task-Based Runtime Systems and Fault Tolerance
-  \begin{itemize}
-  \item New runtime systems and programming interfaces for modern hardware architectures
-  \item Design fault-tolerant applications over TBRS
-  \end{itemize}
 }
 
-\frame{
-  \frametitle{Overview: General Purpose Fault Tolerance}
+%% \frame{
+%%   \frametitle{Overview: General Purpose Fault Tolerance}
 
-  \begin{columns}
-    \begin{column}{.5\textwidth}
-      Experimental approach: MPICH-V
-      \begin{itemize}
-      \item Coordinated Rollback-Recovery
-        \begin{itemize}
-        \item Blocking/Non Blocking
-        \end{itemize}
-      \item Uncoordinated Rollback-Recovery
-        \begin{itemize}
-        \item Message Logging
-        \item Optimistic / Pessimistic / Causal
-        \end{itemize}
-      \item Hierarchical Approach
-      \end{itemize}
-    \end{column}
-    \begin{column}{.5\textwidth}
-      Performance Models for Rollback-Recovery
-      \begin{itemize}
-      \item \textcolor{blue}{Young-Daly}
-      \item \textcolor{blue}{Hierarchical Checkpointing}
-      \item In-Memory Checkpointing
-      \item Managing I/O Contention
-      \end{itemize}
-    \end{column}
-  \end{columns}
-}
+%%   \begin{columns}
+%%     \begin{column}{.5\textwidth}
+%%       Experimental approach: MPICH-V
+%%       \begin{itemize}
+%%       \item Coordinated Rollback-Recovery
+%%         \begin{itemize}
+%%         \item Blocking/Non Blocking
+%%         \end{itemize}
+%%       \item Uncoordinated Rollback-Recovery
+%%         \begin{itemize}
+%%         \item Message Logging
+%%         \item Optimistic / Pessimistic / Causal
+%%         \end{itemize}
+%%       \item Hierarchical Approach
+%%       \end{itemize}
+%%     \end{column}
+%%     \begin{column}{.5\textwidth}
+%%       Performance Models for Rollback-Recovery
+%%       \begin{itemize}
+%%       \item \textcolor{blue}{Young-Daly}
+%%       \item \textcolor{blue}{Hierarchical Checkpointing}
+%%       \item In-Memory Checkpointing
+%%       \item Managing I/O Contention
+%%       \end{itemize}
+%%     \end{column}
+%%   \end{columns}
+%% }
 
-\frame{
-  \frametitle{Overview: Application-Specific Fault-Tolerance}
+%% \frame{
+%%   \frametitle{Overview: Application-Specific Fault-Tolerance}
   
-  \begin{columns}
-    \begin{column}{.5\textwidth}
-      User-Level Failure Mitigation
-      \begin{itemize}
-      \item Specification / Standardization
-      \item \textcolor{blue}{Failure Detection}
-      \item \textcolor{blue}{Consensus}
-      \item Silent Errors
-      \end{itemize}
-    \end{column}
-    \begin{column}{.5\textwidth}
-      Roll-forward fault-tolerance
-      \begin{itemize}
-      \item ABFT for dense matrix factorization
-      \item Composite Approach: ABFT \& Checkpointing
-      \item Moldable Applications
-      \end{itemize}
-    \end{column}
-  \end{columns}
-}
-
+%%   \begin{columns}
+%%     \begin{column}{.5\textwidth}
+%%       User-Level Failure Mitigation
+%%       \begin{itemize}
+%%       \item Specification / Standardization
+%%       \item \textcolor{blue}{Failure Detection}
+%%       \item \textcolor{blue}{Consensus}
+%%       \item Silent Errors
+%%       \end{itemize}
+%%     \end{column}
+%%     \begin{column}{.5\textwidth}
+%%       Roll-forward fault-tolerance
+%%       \begin{itemize}
+%%       \item ABFT for dense matrix factorization
+%%       \item Composite Approach: ABFT \& Checkpointing
+%%       \item Moldable Applications
+%%       \end{itemize}
+%%     \end{column}
+%%   \end{columns}
+%% }
 \frame{
-  \frametitle{Overview: Task-Based Runtime Systems}
-  
-  \begin{columns}
-    \begin{column}{.5\textwidth}
-      Parallel Runtime Scheduler and Execution Controller (PaRSEC)
-      \begin{itemize}
-      \item Micro task (task scheduling overhead $\sim 200ns$)
-      \item Distributed (runs with thousands of nodes)
-      \item Hybrid (Intel, AMD, NVIDIA GPUs)
-      \item Implicit data movement (from device to device, in the background)
-      \item Multiple programming interfaces
+    \frametitle{Background (Task-Based Runtime Systems)}
+
+    \begin{itemize}
+    \item Main topic: portable programmability for HPC
         \begin{itemize}
-        \item Parameterized Task Graphs
-        \item Dynamic Task Discovery
-        \item Template Task Graphs
+        \item Networks with deep hierarchies / Manycore / NUMA / Accelerators
+        \item Separation of concerns: going beyond MPI+X
+        \item Management of asynchrony
+        \item Overlap of computations and data movement
         \end{itemize}
-      \end{itemize}
-    \end{column}
-    \begin{column}{.5\textwidth}
-      \begin{itemize}
-      \item Applications:
+    \item Related topics:
         \begin{itemize}
-        \item Dense Linear Algebra (DPLASMA)
-        \item Sparse Linear Algebra (PaStiX, TiledArray)
-        \item Quantum Chemistry (NWChem, MPQC)
-        \item Multi-representation (HiCMA)
+        \item Expression of parallelism / Programming Interfaces
+        \item Out-of-(accelerator) core memory programming / Memory-Constrained algorithms
+        \item Multiresolution computation with dynamic decision
+        \item Sparse and computation-dependent task systems
         \end{itemize}
-      \item Node-to-node migratable tasks
-      \item Resilient extensions
-        \begin{itemize}
-        \item Resilient to Silent Data Corruptions via Algorithm-Based Fault-Tolerance validation
-        \item Task-based checkpoint and partial rollback-recovery
-        \end{itemize}
-      \end{itemize}
-    \end{column}
-  \end{columns}
+    \end{itemize}
 }
+    
+%% \frame{
+%%   \frametitle{Background (Task-Based Runtime Systems)}
+  
+%%   \begin{columns}
+%%     \begin{column}{.5\textwidth}
+%%       Parallel Runtime Scheduler and Execution Controller (PaRSEC)
+%%       \begin{itemize}
+%%       \item Micro task (task scheduling overhead $\sim 200ns$)
+%%       \item Distributed (runs with thousands of nodes)
+%%       \item Hybrid (Intel, AMD, NVIDIA GPUs)
+%%       \item Implicit data movement (from device to device, in the background)
+%%       \item Multiple programming interfaces
+%%         \begin{itemize}
+%%         \item Parameterized Task Graphs
+%%         \item Dynamic Task Discovery
+%%         \item Template Task Graphs
+%%         \end{itemize}
+%%       \end{itemize}
+%%     \end{column}
+%%     \begin{column}{.5\textwidth}
+%%       \begin{itemize}
+%%       \item Applications:
+%%         \begin{itemize}
+%%         \item Dense Linear Algebra (DPLASMA)
+%%         \item Sparse Linear Algebra (PaStiX, TiledArray)
+%%         \item Quantum Chemistry (NWChem, MPQC)
+%%         \item Multi-representation (HiCMA)
+%%         \end{itemize}
+%%       \item Node-to-node migratable tasks
+%%       \item Resilient extensions
+%%         \begin{itemize}
+%%         \item Resilient to Silent Data Corruptions via Algorithm-Based Fault-Tolerance validation
+%%         \item Task-based checkpoint and partial rollback-recovery
+%%         \end{itemize}
+%%       \end{itemize}
+%%     \end{column}
+%%   \end{columns}
+%% }
