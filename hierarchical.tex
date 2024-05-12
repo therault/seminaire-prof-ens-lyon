@@ -349,84 +349,93 @@
 \newcommand{\fifononblock}{\emph{Ordered-NB}\xspace}
 \newcommand{\leastwaste}{\emph{Least-Waste}\xspace}
 
-
-
-\frame{
-  \frametitle{Checkpointing Protocols}
-
-  \begin{columns}
-    \begin{column}{.45\linewidth}
-      \begin{center}
-        Rollback-Recovery in MPICH-V\\
-        \includegraphics[width=\linewidth]{figures/mpichv-coordinated.png}\\
-        \includegraphics[width=.75\linewidth]{figures/mpichv-noncoordinated.jpg}
-      \end{center}
-    \end{column}
-    \begin{column}{.45\linewidth}
-      \begin{itemize}
-      \item MPICH-V: studied experimentally rollback-recovery protocols in a Message Passing Interface library (MPICH)
-      \item Subject: how to checkpoint efficiently
-        \begin{itemize}
-        \item Coordinated protocols (blocking, non-blocking)
-        \item Uncoordinated protocols (Optimistic, Pessimistic, Causal)
-        \end{itemize}
-      \item Uncovered: when to checkpoint
-      \end{itemize}
-    \end{column}
-  \end{columns}  
-}
-
 \begin{frame}
-  \frametitle{Periodic checkpointing}
+  \frametitle{Chandy-Lamport Lamport Algorithm (1984)}
 
-\begin{center}
-  \includegraphics[width=.9\textwidth]{PeriodicCoordinatedCkpt.png}%
- \end{center}
+  \begin{center}
+    \includegraphics[width=.6\linewidth]{coordinated-idea-orphan.pdf}
+  \end{center}
 
-\textbf{Blocking model:} while a checkpoint is taken, no computation can be performed
+  A message is \emph{missing} if the sender sent it but the received did not receive it
+
+  A message is \red{\emph{orphan}} if the receiver received it but the sender did not send it
+
+  A snapshot is consistent if there are no orphan messages and all missing messages are saved in the checkpoints
   
 \end{frame}
 
-%% \begin{frame}
-%%   \frametitle{Waste in failure-free execution}
+\begin{frame}
+  \frametitle{Blocking coordinated rollback-recovery protocol}
 
-%% \vfill
-%% \centering
-%% \begin{tabular}{cc}
-%% \begin{minipage}{.55\textwidth}
-%%  \includegraphics[width=\textwidth]{PeriodicCoordinatedCkpt.png}
-%% \end{minipage}
-%% &
-%% \begin{minipage}{.65\textwidth}
-%% \begin{itemize}
-%%       \item  \Time[base]: application base time
-%%        \item \Time[FF]: with periodic checkpoints\\
-%%        but failure-free
-%%  \end{itemize}
-%%  \end{minipage}
-%%  \end{tabular}
- 
-%% $$\Time[FF]  =  \Time[base] + \#checkpoints \times \Cr$$
-%% $$\#checkpoints  = 
-%% \left\lceil\frac{\Time[base]}{\period-\Cr}\right\rceil
-%% \sim \frac{\Time[base] }{\period-\Cr} \text{ (valid for large jobs)}$$
+  \begin{center}
+    \includegraphics[width=.6\linewidth]{blocking-coordinated.pdf}
+  \end{center}
 
-%% \red{$$\Waste[FF] = \frac{\Time[FF]-\Time[base]}{\Time[FF]} = \frac{\Cr}{\period}$$}
+  The network is silenced during checkpoint waves, message deliveries are delayed until channels are flushed and checkpoints are taken
+\end{frame}
 
-%% \end{frame}
+\begin{frame}
+  \frametitle{Sources of Waste}
 
-%% \begin{frame}
-%%     \frametitle{Waste due to failures}
+  \begin{center}
+    \resizebox{!}{.3\textheight}{
+        \begin{tikzpicture}
+		\draw[ultra thick,black] (0,1.5) -- (1,1.5); \node[anchor=west,align=left] at (1,1.5) {Time spent working};
+    \draw[ultra thick,red] (0,1) -- (1,1); \node[anchor=west,align=left] at (1,1) {Downtime};
+		\draw[ultra thick,green!70!black] (5,1.5) -- (6,1.5); \node[anchor=west,align=left] at (6,1.5) {Recovery time};
+    \draw[ultra thick,blue] (5,1) -- (6,1); \node[anchor=west,align=left] at (6,1) {Checkpoint time};
+		\draw[thick,-latex] (0,.5) -- (18,0.5); \node[anchor=south west,align=left] at (14,0.5) {Time};
+
+		\foreach \y in {0,...,3}{
+    	\node at (.5,-\y/2) {$P_{\y}$};
+      \draw[ultra thick,black] (1.5,-\y/2) -- (2,-\y/2);
+      \draw[ultra thick,blue] (2,-\y/2) -- (3,-\y/2);
+      \draw[ultra thick,black] (3,-\y/2) -- (7,-\y/2);
+      \draw[ultra thick,blue] (7,-\y/2) -- (8,-\y/2);
+      \draw[ultra thick,black] (8,-\y/2) -- (9.5,-\y/2);
+      \draw[ultra thick,green!70!black] (10,-\y/2) -- (11,-\y/2);
+      \draw[ultra thick,black] (11,-\y/2) -- (15,-\y/2);
+      \draw[ultra thick,blue] (15,-\y/2) -- (16,-\y/2);
+      \draw[ultra thick,black] (16,-\y/2) -- (17,-\y/2);
+    }
     
-%% \begin{center}
-%% \includegraphics[width=0.95\textwidth]{NewYvesCoordinated.png}
-%% \end{center}
-%% $$\Tlost= \D+\R+ \frac{\period}{2}$$
-  
-%% \red{$$\Waste[fail] = \frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)$$}
+    \draw (2,0.25) -- (2,-1.75);
+    \draw (3,0.25) -- (3,-2.25);
+    \draw (7,0.25) -- (7,-1.75);
+    \draw (8,0.25) -- (8,-2.25);
+    \draw (9.5,0.25) -- (9.5,-1.75);
+    \draw (10,0.25) -- (10,-1.75);
+    \draw (11,0.25) -- (11,-2.25);
+    \draw (15,0.25) -- (15,-1.75);
+    \draw (16,0.25) -- (16,-2.25);
+    
+    \node[red] at (9.5,-0.5) {\Huge\Lightning};
+    \draw[ultra thick,red] (9.5,-0.5) -- (10,-0.5);
+    
+    \draw[latex-latex] (2,-1.75) -- node[below] {$C$} ++(1,0);
+    \draw[latex-latex] (3,-1.75) -- node[below] {$T-C$} ++(4,0);
+    \draw[latex-latex] (7,-1.75) -- node[below] {$C$} ++(1,0);
+    \draw[latex-latex] (8,-1.75) -- node[below] {$T_{lost}$} ++(1.5,0);
+    \draw[latex-latex] (9.5,-1.75) -- node[below] {$D$} ++(0.5,0);
+    \draw[latex-latex] (10,-1.75) -- node[below] {$R$} ++(1,0);
+    \draw[latex-latex] (11,-1.75) -- node[below] {$T-C$} ++(4,0);
+    \draw[latex-latex] (15,-1.75) -- node[below] {$C$} ++(1,0);
+    
+    \draw[latex-latex] (3,-2.25) -- node[below] {$T$} ++(5,0);
+    \draw[latex-latex] (11,-2.25) -- node[below] {$T$} ++(5,0);
+    
+    \end{tikzpicture}}
+        \end{center}
 
+  $$
+  \begin{array}{ccc}
+    &\hspace*{2cm}&   \Tlost= \frac{\period}{2}\text{ (true for large jobs)}\\
+    & &\\
+      \Waste[FailureFree] = \frac{\Cr}{\period} & &
+      \Waste[Failure] = \frac{1}{\mu} \left( \D + \R + \frac{\period}{2} \right)\\
+  \end{array}$$
 
-%% \end{frame}
+\end{frame}
 
 %% \begin{frame}
 %%   \frametitle{Total waste}
@@ -482,6 +491,30 @@
 \end{columns}
 
 \end{frame}
+
+\frame{
+  \frametitle{In practice: checkpointing protocols}
+
+  \begin{columns}
+    \begin{column}{.45\linewidth}
+      \begin{center}
+        Rollback-Recovery in MPICH-V\\
+        \includegraphics[width=\linewidth]{figures/mpichv-coordinated.png}\\
+        \includegraphics[width=.75\linewidth]{figures/mpichv-noncoordinated.jpg}
+      \end{center}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \begin{itemize}
+      \item MPICH-V: studied experimentally rollback-recovery protocols in a Message Passing Interface library (MPICH)
+      \item Subject: how to checkpoint efficiently
+        \begin{itemize}
+        \item Coordinated protocols (blocking, non-blocking)
+        \item Uncoordinated protocols (Optimistic, Pessimistic, Causal)
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+  \end{columns}  
+}
 
 \begin{frame}
   \frametitle{Hierarchical checkpointing}

@@ -700,25 +700,3 @@ to avoid correlated failures
 \includegraphics[width=1.1\textwidth]{recva-titan.pdf}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Algorithm-Based Fault Tolerant LU over ULFM}
-
-  \begin{columns}
-    \begin{column}{.3\textwidth}
-      \begin{itemize}
-      \item Algorithm-Based Fault Tolerant LU (PDGETRF) based on ULFM
-        \begin{itemize}
-        \item Replication to ensure checksum availability
-        \item Partial checkpoint to rollback Q-panel operation
-        \item ABFT to recover most of the missing data
-        \item Partial re-execution to recover panel
-        \end{itemize}
-      \end{itemize}
-    \end{column}
-    \begin{column}{.7\textwidth}
-        \begin{center}
-          \includegraphics[width=.9\linewidth]{abftlu-perf.pdf}
-        \end{center}
-    \end{column}
-  \end{columns}
-\end{frame}
