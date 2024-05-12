@@ -1,0 +1,39 @@
+\section[Major Contribution 1]{Major Contribution 1: Application-Specific Fault Tolerance}
+
+\begin{frame}
+  \frametitle{ULFM: User-Level Failure Mitigation}
+
+  \centering\includegraphics[height=.85\textheight]{ulfm.png}
+
+\end{frame}
+
+\input{inria-fd}
+
+\begin{frame}
+  \frametitle{Conclusion on Application-Specific Fault Tolerance}
+
+  \begin{itemize}
+  \item Many applications are amenable to 'Roll-Forward' approaches
+    \begin{itemize}
+    \item No Re-Execution, no TLost! (or very little)
+    \end{itemize}
+  \item Performance of roll-forward is orders of magnitude higher than checkpoint/restart
+    \begin{itemize}
+    \item And it scales better!
+    \end{itemize}
+  \item Roll-forward is only for specific parts of real life applications
+    \begin{itemize}
+    \item But we have composition techniques!
+    \end{itemize}
+  \item Roll-forward requires a resilient communication middleware
+    \begin{itemize}
+    \item ULFM is integrated in Open MPI and MPICH
+    \item Overhead on failure-free is non measurable
+    \item Overhead on failure-specific operation is very small
+    \item It is slowly being integrated in the MPI Standard
+    \end{itemize}
+  \end{itemize}
+  
+\end{frame}
+
+\input{inria-abcd}
