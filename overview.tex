@@ -3,7 +3,11 @@
 %%
 
 \frame{
-    \frametitle{Background\only<3>{ (software development and dissemination)}\only<2>{ (Funding Projects)}}
+    \frametitle{Background
+       \only<2>{(Research Topics: Fault-Tolerance)}
+       \only<3>{(Research Topics: Task-Based Runtime Systems)}
+       \only<4>{(Funding Projects)}
+       \only<5>{(software development and dissemination)}}
 
     \pgfplotsset{
         /pgf/number format/year/.style={fixed, 1000 sep={}}
@@ -54,7 +58,7 @@
         \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (13,-2.5) rectangle (24,-3.1);
         \node[align=center,text width=12cm] at (18.5,-2.8) {Performance Modeling for Fault Tolerance};
 
-    \only<2>{
+    \only<4>{
         \fill[fill=red,fill opacity=.4] (7,-3.5) rectangle (11,-3.7);
         \node[align=center,text width=3cm] at (9,-3.6) {\textbf{PI} SAFE-OS (ANR)};
 
@@ -68,7 +72,7 @@
         \fill[rounded corners=10pt,fill=brown,fill opacity=0.2] (10,-4.1) rectangle (24,-4.7);
         \node[align=center,text width=18cm] at (17,-4.4) {Task-Based Runtime Systems};
 
-    \only<3>{
+    \only<5>{
         \fill[fill=blue,fill opacity=.6] (3,-5.3) rectangle (10,-5.5);
         \node[align=left,text width=6cm,color=blue,anchor=west] at (3,-5.1) {\textbf{MPICH-V}};
         \fill[fill=yellow,fill opacity=1] (8,-5.4) circle (3pt);
@@ -81,7 +85,7 @@
         \node[align=left,anchor=south west,color=brown] at (25,-5.1) {$\left\{\begin{tabular}{l}\textrm{DPLASMA (UTK)}\\\textrm{Chameleon (INRIA)}\\\textrm{PaSTIX (INRIA)}\\\textrm{HiCMA (KAUST)}\\\textrm{MADNESS (SBU)}\\\textrm{NWChemEx (NWU)}\end{tabular}\right.$};
     }
     
-    \only<2>{
+    \only<4>{
         \fill[fill=blue,fill opacity=.4] (6,-5.1) rectangle (9,-5.3);
         \node[align=center,text width=3cm] at (7.5,-5.2) {\textbf{coPI} QosCosGrid (STREP)};
         \fill[fill=brown,fill opacity=.4] (16,-5.1) rectangle (23,-5.3);
@@ -94,7 +98,7 @@
         \fill[rounded corners=10pt,fill=blue,fill opacity=0.2] (8,-5.7) rectangle (24,-6.3);
         \node[align=center,text width=12cm] at (16,-6.0) {Fault Tolerant MPI, Application-Specific FT for HPC};
 
-    \only<3>{
+    \only<5>{
         \fill[fill=blue,fill opacity=.6] (11,-6.9) rectangle (24,-7.1);
         \node[align=left,text width=6cm,color=blue,anchor=west] at (11,-6.7) {\textbf{User-Level Failure Mitigation}};
         \fill[fill=yellow,fill opacity=1] (21,-7.0) circle (3pt);
@@ -104,7 +108,7 @@
         \node[align=left,anchor=west,color=blue] at (25,-6.7) {$\left\{\begin{tabular}{l}\textrm{Fenix (SNL)}\\\textrm{CRAFT (RRZE)}\\\textrm{Resilient X10 (ANU)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{SAP database (Germany)}\\\textrm{NR-MPI (NUDT, China)}\end{tabular}\right.$};
     }
 
-    \only<2>{
+    \only<4>{
         \fill[fill=blue,fill opacity=.4] (17,-6.7) rectangle (23,-6.9);
         \node[align=center,text width=3cm] at (19,-6.8) {\textbf{coPI} EVOLVE (NSF)};
     }
@@ -116,12 +120,12 @@
     \only<1,2>{
         \node[align=left,anchor=south west,color=white,opacity=0] at (25,-8.3) {$\left\{\begin{tabular}{l}\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\\\textrm{Hadoop - FT-MRMPI (U.Col)}\end{tabular}\right.$};
     }
-    \only<3>{
+    \only<5>{
         \fill[fill=brown,fill opacity=.6] (13,-8.5) rectangle (24,-8.7);
         \node[align=left,text width=6cm,color=brown,anchor=west] at (13,-8.3) {\textbf{Template Task Graph}};
         \node[align=left,anchor=north west,color=brown] at (25,-8.3) {$\left\{\begin{tabular}{l}\textrm{TiledArray (VT)}\\\textrm{MADNESS (SBU)}\\MPQC (VT)\end{tabular}\right.$};
     }
-    \only<2>{
+    \only<4>{
         \fill[fill=brown,fill opacity=.4] (14,-8.3) rectangle (19,-8.5);
         \node[align=center,text width=3cm] at (16.5,-8.4) {\textbf{coPI} TESSE (NSF)};
         \fill[fill=brown,fill opacity=.4] (19,-8.3) rectangle (25,-8.5);
@@ -132,29 +136,62 @@
         \node[align=center,text width=18cm] at (19.5,-9.2) {Memory-Constrained Scheduling of Tasks};
 
     \end{tikzpicture}}
+
+    \begin{overlayarea}{\linewidth}{0cm}
+    \only<2>{%
+      \vspace{-6cm}
+      \begin{center}
+        \begin{minipage}{.9\linewidth}
+          \begin{block}{Research Topics: Fault Tolerance}
+            Two complementary approaches to Fault Tolerance
+              \begin{itemize}
+              \item General Purpose Fault Tolerance
+                \begin{itemize}
+                \item Checkpointing and rollback-recovery
+                  \begin{itemize}
+                  \item Experimental approach: implementing new protocols and evaluating them in 'real' applications / deployments
+                  \item Performance models approach: designing mathematical models to project performance at scale or under new assumptions
+                  \end{itemize}
+                \end{itemize}
+              \item Application-Specific Fault Tolerance
+                \begin{itemize}
+                \item Design / adapt communication middlewares to write fault-tolerant applications
+                \item Design and evaluate new fault-tolerance schemes for parallel applications
+                \end{itemize}
+              \end{itemize}
+          \end{block}
+        \end{minipage}
+      \end{center}
+    }
+    \only<3>{%
+      \vspace{-6cm}
+      \begin{center}
+        \begin{minipage}{.9\linewidth}
+          \begin{block}{Research Topics: Task Based Runtime Systems}
+            \begin{itemize}
+            \item Main topic: portable programmability for HPC
+                \begin{itemize}
+                \item Networks with deep hierarchies / Manycore / NUMA / Accelerators
+                \item Separation of concerns: going beyond MPI+X
+                \item Management of asynchrony
+                \item Overlap of computations and data movement
+                \end{itemize}
+            \item Related topics:
+                \begin{itemize}
+                \item Expression of parallelism / Programming Interfaces
+                \item Out-of-(accelerator) core memory programming / Memory-Constrained algorithms
+                \item Multiresolution computation with dynamic decision
+                \item Sparse and computation-dependent task systems
+                \end{itemize}
+            \end{itemize}
+          \end{block}
+        \end{minipage}
+      \end{center}
+    }
+  \end{overlayarea}
+
 }   
     
-\frame{
-  \frametitle{Background (Fault Tolerance)}
-
-  Two complementary approaches to Fault Tolerance
-  \begin{itemize}
-  \item General Purpose Fault Tolerance
-    \begin{itemize}
-    \item Checkpointing and rollback-recovery
-      \begin{itemize}
-      \item Experimental approach: implementing new protocols and evaluating them in 'real' applications / deployments
-      \item Performance models approach: designing mathematical models to project performance at scale or under new assumptions
-      \end{itemize}
-    \end{itemize}
-  \item Application-Specific Fault Tolerance
-    \begin{itemize}
-    \item Design / adapt communication middlewares to write fault-tolerant applications
-    \item Design and evaluate new fault-tolerance schemes for parallel applications
-    \end{itemize}
-  \end{itemize}
-}
-
 %% \frame{
 %%   \frametitle{Overview: General Purpose Fault Tolerance}
 
@@ -209,26 +246,6 @@
 %%     \end{column}
 %%   \end{columns}
 %% }
-\frame{
-    \frametitle{Background (Task-Based Runtime Systems)}
-
-    \begin{itemize}
-    \item Main topic: portable programmability for HPC
-        \begin{itemize}
-        \item Networks with deep hierarchies / Manycore / NUMA / Accelerators
-        \item Separation of concerns: going beyond MPI+X
-        \item Management of asynchrony
-        \item Overlap of computations and data movement
-        \end{itemize}
-    \item Related topics:
-        \begin{itemize}
-        \item Expression of parallelism / Programming Interfaces
-        \item Out-of-(accelerator) core memory programming / Memory-Constrained algorithms
-        \item Multiresolution computation with dynamic decision
-        \item Sparse and computation-dependent task systems
-        \end{itemize}
-    \end{itemize}
-}
     
 %% \frame{
 %%   \frametitle{Background (Task-Based Runtime Systems)}
@@ -268,3 +285,4 @@
 %%     \end{column}
 %%   \end{columns}
 %% }
+
