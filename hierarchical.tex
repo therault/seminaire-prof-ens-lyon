@@ -375,7 +375,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Sources of Waste}
+  \frametitle{Periodic checkpointing: two sources of waste}
 
   \begin{center}
     \resizebox{!}{.3\textheight}{
@@ -492,30 +492,6 @@
 
 \end{frame}
 
-\frame{
-  \frametitle{In practice: checkpointing protocols}
-
-  \begin{columns}
-    \begin{column}{.45\linewidth}
-      \begin{center}
-        Rollback-Recovery in MPICH-V\\
-        \includegraphics[width=\linewidth]{figures/mpichv-coordinated.png}\\
-        \includegraphics[width=.75\linewidth]{figures/mpichv-noncoordinated.jpg}
-      \end{center}
-    \end{column}
-    \begin{column}{.45\linewidth}
-      \begin{itemize}
-      \item MPICH-V: studied experimentally rollback-recovery protocols in a Message Passing Interface library (MPICH)
-      \item Subject: how to checkpoint efficiently
-        \begin{itemize}
-        \item Coordinated protocols (blocking, non-blocking)
-        \item Uncoordinated protocols (Optimistic, Pessimistic, Causal)
-        \end{itemize}
-      \end{itemize}
-    \end{column}
-  \end{columns}  
-}
-
 \begin{frame}
   \frametitle{Hierarchical checkpointing}
   
@@ -552,6 +528,31 @@
 }
 
 \end{frame}
+
+\frame{
+  \frametitle{In practice: checkpointing protocols}
+
+  \begin{columns}
+    \begin{column}{.45\linewidth}
+      \begin{center}
+        Rollback-Recovery in MPICH-V\\
+        \includegraphics[width=\linewidth]{figures/mpichv-coordinated.png}\\
+        \includegraphics[width=.75\linewidth]{figures/mpichv-noncoordinated.jpg}
+      \end{center}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \begin{itemize}
+      \item MPICH-V: studied experimentally rollback-recovery protocols in a Message Passing Interface library (MPICH)
+      \item Subject: how to checkpoint efficiently
+        \begin{itemize}
+        \item Coordinated protocols (blocking, non-blocking)
+        \item Uncoordinated protocols (Optimistic, Pessimistic, Causal)
+        \end{itemize}
+      \item Unadressed: when to checkpoint?
+      \end{itemize}
+    \end{column}
+  \end{columns}  
+}
 
 %% \begin{frame}
 %%   \frametitle{Hierarchical Checkpointing: Failure during computing phase}
@@ -704,7 +705,7 @@
       \item Failure between two checkpoint waves
       \item Failure within a wave
         \begin{itemize}
-        \item but before the group checkpoint
+        \item before the group checkpoint
         \item during the group checkpoint
         \item after the group checkpoint
         \end{itemize}

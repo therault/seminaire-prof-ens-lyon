@@ -26,6 +26,15 @@
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
+\usepackage{tabularx}
+
+\newcommand{\myitem}[1]{%
+\begin{tabularx}{\linewidth}{@{}l@{}>{\raggedright}X@{}}
+\usebeamercolor[fg]{structure}$\bullet$~~ & #1
+\end{tabularx}%
+}    
+\newenvironment{myitemize}{\par}{\par}   
+
 \AtBeginDocument{\renewcommand{\proofname}{{\bf Proof}}}
 
 \makeatletter
@@ -293,8 +302,8 @@
         
 \input{overview}
 \input{contribution}
-\input{projet-recherche}
 \input{admin}
+\input{projet-recherche}
 \input{projet-enseignement}
 \input{conclusion}
 
