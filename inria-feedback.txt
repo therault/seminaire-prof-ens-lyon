@@ -1,0 +1,44 @@
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with C-x C-f and enter text in its buffer.
+
+- trop technique
+- pas de contextualisation: pas de HPC, pas de FT, pas de MPI.
+  -> HPC, grosses machines, grosses apps
+  -> 2 manieres de programmer
+  -> reels problemes a l'echelle, energie, tolerance aux pannes
+- Important : quel est mon originalite? Quelle synergie avec TOPAL.
+- Tu gommes ta contribution : est-ce qu'il y a eu des papiers ? Est-ce que c'est utilise ?
+
+- Projet de recherche : convergence des deux points ce n'est pas convaincant?
+  C'est quoi la voix qu'il veut porter ?
+  Tu vas chez qui ? TOPAL ? CONCACE ?
+  Au cours de ma carriere, j'ai ete a la tete de projets de plus en plus de grande envergure, et les deux derniers sont ca et ca.
+
+- 1er slide trop long Couper le 1er slide en trois?
+
+- Etre plus explicite sur l'impact (nombre de papiers, production logicielle), par categorie.
+
+- Olivier : projet trop technique : centrer sur la vision, pas sur les collaborations et l'integration
+  J'ai envie de faire ca et ca peut etre interessant pour telle equipe
+
+- Emmanuel : quelle est la vision de ton domaine ?
+  Les gens n'en ont rien a faire des courbes.
+
+- Helene Sauzeon : mobilite de recherche c'est aussi une bonne raison pour un deplacement
+  -> Faire des schemas pour avoir une histoire
+
+- Pas assez de ruptures de rythme. Du mal a voir qu'on change de niveau de discussion
+  Trop de dissonance entre ce que je dit et ce que j'ecrit
+
+- Julien Diaz : avoir un transparent qui peut rester derriere moi
+  - resume du projet
+  - elements importants du dossier (publications, projets finances)
+  - collaborations, encadrement : quels elements?
+- E. Jeannot : pour les collabs, tu viens avec ton reseau. Mettre en avant le reseau US en particulier
+
+    5min background
+    6min30 contrib 1
+    4min30 contrib 2
+    9min sur les elements du projet
+
+- TA VISION

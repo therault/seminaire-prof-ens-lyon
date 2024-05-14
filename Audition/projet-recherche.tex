@@ -1,0 +1,141 @@
+\section{Research Program and Integration in ROMA}
+
+\begin{frame}
+  \frametitle{Task-based approaches $\Rightarrow$ sea-change in fault tolerance}
+
+  \begin{center}
+    \begin{tabular}{C{.4\linewidth}|C{.4\linewidth}}
+      General-purpose FT & Application-specific FT \\\hline
+      Coordinated checkpointing and rollback-recovery & Algorithm-Based Fault Tolerance  \\
+      Replication                                     & Iterative convergence
+    \end{tabular}
+
+    \medskip
+    
+    \textcolor{blue}{HPC FT approaches have been designed for bulk-synchronous programming}
+    
+    \bigskip
+  
+    Task-based approach: asynchronous execution\\
+    and dynamically scheduled independent tasks
+
+    \bigskip
+  
+    \textcolor{red}{We need to redesign fault-tolerance in the context of task systems}
+  \end{center}
+
+\end{frame}
+
+\frame{
+  \frametitle{Opportunity and Challenge: Malleability}
+
+  \begin{beamerboxesrounded}{Opportunity}
+    \begin{center}
+      \textcolor{red}{Task systems introduce generic malleability}
+    \end{center}
+
+    \begin{itemize}
+    \item Tasks are units of work with identified inputs and outputs
+    \item Runtime systems can migrate tasks to react to external condition changes (esp. process crash)
+    \end{itemize}
+  \end{beamerboxesrounded}
+
+  Challenges:
+  \begin{itemize}
+  \item Non-linear performance degradation due to attrition
+    \begin{itemize}
+    \item[\frownie] Work and data placement is critical to algorithm performance and usually left to the programmer
+    \item[\smiley] Crashed processes should be replaced, so performance degradation should only be transient
+    \end{itemize}
+  \item Redesign checkpointing as a per-task basis
+    \begin{itemize}
+    \item noncoordinated checkpointing and message logging
+    \item selective replication
+    \end{itemize}
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{Applying ABFT to Task-Based Runtime Systems}
+
+  \begin{itemize}
+  \item ABFT: bulk-synchronous 'by nature'
+    \begin{itemize}
+    \item Need to keep the cheksum valid at each step
+    \item Efficient \emph{because} checksum is updated by only extending synchronous operation
+    \end{itemize}
+  \item Task-Based Runtime Systems: asynchronous 'by nature'
+    \begin{itemize}
+    \item Add strict control flow to keep checksum up to date? \frownie
+    \item How to react to failures? Conditional DAG?
+    \end{itemize}
+  \item ABFT + Tasks:
+    \begin{itemize}
+    \item Extend DAG with checksum / checksum update tasks
+    \item Introduce scheduling priorities to make sure checksums are updated
+    \item Define alternative paths to produce data, associate cost with paths
+      \begin{itemize}
+      \item A block can be computed by inversing the checksum
+      \item but preferable path is to update directly
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+
+  \begin{center}
+    \textcolor{red}{Likely collaborations in NUMPEX}
+  \end{center}
+}
+
+\begin{frame}
+  \frametitle{Silent Data Corruption}
+
+  SDCs are not well evaluated\footnote{In general we need more studies on faults in leadership systems and high-end systems}
+
+  Intuition:
+  \begin{itemize}
+  \item They happen more often as the amount of memory grows
+  \item They happen more often as the computational intensity grows
+  \end{itemize}
+
+  If the intuition is right, they will happen more and more frequently
+
+  Application-specific fault tolerance can help
+  \begin{itemize}
+  \item Not necessarily (or not only) to correct failures
+  \item But also to detect failures
+  \end{itemize}
+
+  \bigskip
+
+  Challenge: Validation of computation is possible but \textcolor{red}{not reliable}
+
+  \textcolor{red}{Ongoing work: how to (efficiently) use unreliable validation of work}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fault tolerance as a tool for energy saving}
+
+  \begin{itemize}
+  \item Energy consumption of HPC centers becomes a problem (both economical and ecological)
+    \begin{itemize}
+    \item Current policy is to not bill allocation if a node within the allocation fails
+    \item Some platforms are switching to bill-per-Joule
+    \item Does it make sense to get 'free' Joules thanks to a node failure?
+    \item[] ~
+    \item Cloud-HPC convergence: CPUs are billed as soon as allocated, even if the application cannot be deployed
+    \end{itemize}
+  \item Using stranded energy in Cloud or HPC
+    \begin{itemize}
+    \item Non-dispatchable renewable energy sources to power HPC
+    \item $\Rightarrow$ Power cost varies with time (soft version)
+    \item $\Rightarrow$ Power capping varies with time (hard version)
+    \item $\Rightarrow$ Job scheduler may have to kill apps. Resilience can help.
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+    \textcolor{red}{Fits well the Energy Minimization topic in ROMA}
+  \end{center}
+\end{frame}
+
+
